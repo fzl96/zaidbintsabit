@@ -47,11 +47,11 @@ export const sidebarNavItems: SidebarNavItem[] = [
       },
       {
         title: "Infaq Anak Yatim",
-        href: "/dashboard/keuangan/infaq-anak-yatim",
+        href: "/dashboard/infaq-anak-yatim",
       },
       {
         title: "Infaq Ramadhan",
-        href: "/dashboard/keuangan/infaq-ramadhan",
+        href: "/dashboard/infaq-ramadhan",
       },
     ],
   },
