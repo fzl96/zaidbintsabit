@@ -33,15 +33,20 @@ export const insertFinanceSchema =
   createInsertSchema(keuangan).omit(timestamps);
 export const insertFinanceParams = insertFinanceSchema
   .extend({
-    jumlah: z.coerce.number(),
+    jumlah: z.coerce.number().min(1, {
+      message: "Jumlah minimal adalah 1",
+    }),
     keterangan: z.string().nullish(),
   })
   .omit({
     id: true,
   });
-
+export const updateFinanceSchema = baseSchema;
+export const updateFinanceParams = insertFinanceSchema;
 export const keuanganIdScehma = baseSchema.pick({ id: true });
 
+export type Keuangan = typeof keuangan.$inferSelect;
 export type NewKeuangan = z.infer<typeof insertFinanceSchema>;
 export type NewKeuanganParams = z.infer<typeof insertFinanceParams>;
+export type UpdateKeuanganParams = z.infer<typeof updateFinanceParams>;
 export type KeuanganId = z.infer<typeof keuanganIdScehma>["id"];
