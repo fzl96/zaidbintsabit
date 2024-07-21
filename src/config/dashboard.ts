@@ -85,6 +85,10 @@ export const sidebarNavItems: SidebarNavItem[] = [
         title: "Sholat Tarawih",
         href: "/dashboard/sholat-tarawih",
       },
+      {
+        title: "Sholat Ied",
+        href: "/dashboard/sholat-ied",
+      },
     ],
   },
   {

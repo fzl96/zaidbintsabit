@@ -84,7 +84,7 @@ export function JadwalSholatForm({
                 <FormLabel className="text-left">Imam</FormLabel>
                 <FormControl>
                   {/* @ts-ignore */}
-                  <Input {...field} placeholder="Masukkan nama imam" required />
+                  <Input {...field} placeholder="Masukkan nama imam" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
