@@ -34,7 +34,7 @@ export default function DashboardLayout({
               <span className="">Masjid {siteConfig.name}</span>
             </Link>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 overflow-y-auto">
             <Nav className="grid items-start px-2 text-sm font-medium lg:px-4" />
           </div>
         </div>

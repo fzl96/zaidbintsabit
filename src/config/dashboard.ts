@@ -71,6 +71,23 @@ export const sidebarNavItems: SidebarNavItem[] = [
     ],
   },
   {
+    title: "Jadwal Sholat",
+    items: [
+      {
+        title: "Sholat Wajib",
+        href: "/dashboard/sholat-wajib",
+      },
+      {
+        title: "Sholat Jum'at",
+        href: "/dashboard/sholat-jumat",
+      },
+      {
+        title: "Sholat Tarawih",
+        href: "/dashboard/sholat-tarawih",
+      },
+    ],
+  },
+  {
     title: "Data Masjid",
     items: [
       {

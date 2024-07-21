@@ -23,7 +23,7 @@ export const jadwalSholat = pgTable("jadwal_sholat", {
   nama: varchar("nama", { length: 255 }).notNull(),
   jenisJadwalSholat: jenisJadwalSholatEnum("jenis_jadwal_sholat").notNull(),
   imam: varchar("imam", { length: 255 }),
-  tanggal: timestamp("tanggal").notNull(),
+  tanggal: timestamp("tanggal").notNull().defaultNow(),
   judul: varchar("judul", { length: 255 }),
   khatib: varchar("khatib", { length: 255 }),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -33,9 +33,8 @@ export const jadwalSholat = pgTable("jadwal_sholat", {
 const baseSchema = createSelectSchema(jadwalSholat);
 export const insertJadwalSholatSchema =
   createInsertSchema(jadwalSholat).omit(timestamps);
-
 export const updateJadwalSholatSchema = baseSchema.omit(timestamps);
-export const updateJadwalSholatParams = insertJadwalSholatSchema;
+export const updateJadwalSholatParams = insertJadwalSholatSchema.extend({});
 export const jadwalSholatIdSchema = baseSchema.pick({ id: true });
 
 export type JadwalSholat = typeof jadwalSholat.$inferSelect;
