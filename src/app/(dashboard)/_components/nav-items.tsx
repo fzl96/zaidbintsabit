@@ -4,7 +4,6 @@ import { sidebarNavItems } from "@/config/dashboard";
 import { Icons } from "@/components/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
 import { cn } from "@/lib/utils";
 
 export function NavItems({
@@ -25,13 +24,10 @@ export function NavItems({
             <div className="space-y-2">
               {item.items.map((subItem) => {
                 const Icon = Icons[subItem.icon || "arrowRight"];
-                const active = useMemo(() => {
-                  return (
-                    (pathname.startsWith(subItem.href) &&
-                      subItem.href !== "/dashboard") ||
-                    (pathname === subItem.href && subItem.href === "/dashboard")
-                  );
-                }, [pathname]);
+                const active =
+                  (pathname.startsWith(subItem.href) &&
+                    subItem.href !== "/dashboard") ||
+                  (pathname === subItem.href && subItem.href === "/dashboard");
 
                 return (
                   <Link
