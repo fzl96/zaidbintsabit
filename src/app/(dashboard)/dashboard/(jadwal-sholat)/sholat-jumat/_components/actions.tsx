@@ -9,8 +9,8 @@ export function UpdateJadwalSholat({ jadwal }: { jadwal: JadwalSholat }) {
   const [open, setOpen] = useState(false);
   return (
     <DrawerDialog
-      title={`Edit Data Infaq Ramadhan`}
-      description={`Isi form untuk mengubah data infaq ramadhan ini`}
+      title={`Edit Data Jadwal Sholat`}
+      description={`Isi form untuk mengubah data jadwal sholat ini`}
       trigger="edit"
       open={open}
       setOpen={setOpen}
