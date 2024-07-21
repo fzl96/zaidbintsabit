@@ -2,6 +2,8 @@ import { getJadwalSholat } from "@/server/api/jadwal-sholat/queries";
 import { formatDate } from "@/lib/utils";
 import { columns } from "./columns";
 import { DataTable } from "@/components/data-table";
+import { UpdateJadwalSholat } from "./actions";
+import { format } from "date-fns";
 
 export async function SholatWajibTable() {
   const data = await getJadwalSholat({ jenis: "wajib" });
@@ -23,13 +25,13 @@ export async function SholatWajibTable() {
                 )}
                 <div className="flex w-full items-center justify-between pt-4">
                   <div className="flex flex-col">
-                    <span className="text-base">
-                      {formatDate(jadwal.tanggal)}
-                    </span>
+                    <div className="text-sm flex flex-col">
+                      <span>{format(jadwal.tanggal, "HH:mm")}</span>
+                      <span>{formatDate(jadwal.tanggal)} </span>
+                    </div>
                   </div>
                   <div className="flex justify-end gap-2">
-                    {/* <UpdateFinance finance={finance} type="INCOME" />
-                    <DeleteFinance financeId={finance.id} type="EXPENSE" /> */}
+                    <UpdateJadwalSholat jadwal={jadwal} />
                   </div>
                 </div>
               </div>
