@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import { Icons } from "@/components/icons";
 import {
@@ -165,6 +166,24 @@ export function JadwalSholatForm({
                     </div>
                   </PopoverContent>
                 </Popover>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="display"
+            render={({ field }) => (
+              <FormItem className="">
+                <div className="flex items-center gap-2 my-4">
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="">Tampilkan di halaman utama</FormLabel>
+                </div>
+                <FormMessage />
               </FormItem>
             )}
           />
