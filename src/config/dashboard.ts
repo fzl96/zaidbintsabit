@@ -56,13 +56,23 @@ export const sidebarNavItems: SidebarNavItem[] = [
     ],
   },
   {
-    title: "Data Masjid",
+    title: "Data Inventaris",
     items: [
+      {
+        title: "Kategori Inventaris",
+        href: "/dashboard/kategori-inventaris",
+        icon: "folders",
+      },
       {
         title: "Inventaris",
         href: "/dashboard/inventaris",
         icon: "folder",
       },
+    ],
+  },
+  {
+    title: "Data Masjid",
+    items: [
       {
         title: "Jamaah",
         href: "/dashboard/jamaah",
