@@ -25,7 +25,9 @@ const baseSchema = createSelectSchema(kategoriInventaris);
 export const insertKategoriInventarisSchema =
   createInsertSchema(kategoriInventaris).omit(timestamps);
 export const insertKategoriInventarisParams = insertKategoriInventarisSchema
-  .extend({})
+  .extend({
+    nama: z.string().min(1, { message: "Nama harus diisi" }),
+  })
   .omit({ id: true });
 export const updateKateogriInventarisParams = insertKategoriInventarisSchema;
 export const kategoriInvetarisIdSchema = baseSchema.pick({ id: true });
@@ -69,6 +71,9 @@ export const insertInventarisSchema =
   createInsertSchema(inventaris).omit(timestamps);
 export const insertInventarisParams = insertInventarisSchema
   .extend({
+    nama: z.string().min(1, { message: "Nama harus diisi" }),
+    jumlah: z.coerce.number(),
+    kategoriId: z.coerce.number(),
     satuan: z.string().nullish(),
     keterangan: z.string().nullish(),
   })
