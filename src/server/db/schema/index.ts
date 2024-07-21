@@ -5,5 +5,13 @@ import {
   kategoriInventaris,
   inventarisRelations,
 } from "./inventaris";
+import { jadwalSholat } from "./jadwal-sholat";
 
-export { users, keuangan, inventaris, kategoriInventaris, inventarisRelations };
+export {
+  users,
+  keuangan,
+  inventaris,
+  kategoriInventaris,
+  inventarisRelations,
+  jadwalSholat,
+};
