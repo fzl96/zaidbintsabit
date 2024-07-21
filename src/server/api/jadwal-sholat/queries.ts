@@ -3,7 +3,7 @@ import { db } from "@/server/db";
 import { jadwalSholat } from "@/server/db/schema";
 
 type Jenis = {
-  jenis: "wajib" | "jumat" | "tarawih" | "adha" | "fitri";
+  jenis: "wajib" | "jumat" | "tarawih" | "ied";
 };
 
 export async function getJadwalSholat({ jenis }: Jenis) {

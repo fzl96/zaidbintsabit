@@ -14,8 +14,7 @@ export const jenisJadwalSholatEnum = pgEnum("jenis_jadwal_sholat", [
   "wajib",
   "jumat",
   "tarawih",
-  "fitri",
-  "adha",
+  "ied",
 ]);
 
 export const jadwalSholat = pgTable("jadwal_sholat", {
