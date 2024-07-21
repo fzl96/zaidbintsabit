@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("  antialiased grainy font-sans", inter.variable)}>
-        <div vaul-drawer-wrapper="" className="min-h-screen bg-background">
-          {children}
-        </div>
+        <EdgeStoreProvider>
+          <div vaul-drawer-wrapper="" className="min-h-screen bg-background">
+            {children}
+          </div>
+        </EdgeStoreProvider>
         <Toaster position="top-center" richColors theme="light" />
       </body>
     </html>
