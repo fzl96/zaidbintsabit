@@ -1,7 +1,8 @@
 import { currentUser } from "@/lib/auth";
 import { db } from "@/server/db";
-import { Keuangan, KeuanganId, keuangan } from "@/server/db/schema/keuangan";
 import {
+  KeuanganId,
+  keuangan,
   type NewKeuanganParams,
   insertFinanceSchema,
   type UpdateKeuanganParams,

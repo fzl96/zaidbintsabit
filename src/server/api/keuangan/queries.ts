@@ -63,8 +63,8 @@ export async function getKeuanganSaldo({
     }
     return acc;
   }, 0);
-  
-  console.log(saldo)
+
+  console.log(saldo);
 
   return saldo;
 }
@@ -100,5 +100,5 @@ export async function getKeuanganTotalPages({
     .from(keuangan)
     .where(and(eq(keuangan.kategori, kategori), eq(keuangan.tipe, tipe)));
 
-  return countRes?.count ? Math.ceil(countRes.count / 6) : 1;
+  return countRes?.count ? Math.ceil(countRes.count / LIMIT) : 1;
 }
