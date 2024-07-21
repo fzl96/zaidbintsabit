@@ -16,6 +16,7 @@ import {
   type NewKategoriInventarisParams,
   type UpdateKategoriInventarisParams,
   type KategoriInventarisId,
+  insertKategoriInventarisSchema,
 } from "@/server/db/schema/inventaris";
 
 const handleErrors = (e: unknown) => {
@@ -68,7 +69,7 @@ export const createKategoriInventarisAction = async (
   input: NewKategoriInventarisParams
 ) => {
   try {
-    const payload = insertInventarisSchema.parse(input);
+    const payload = insertKategoriInventarisSchema.parse(input);
     const res = await createKategoriInventaris(payload);
     if (res.error) throw new Error(res.error);
     return;
@@ -81,8 +82,8 @@ export const updateKategoriInventarisAction = async (
   input: UpdateKategoriInventarisParams
 ) => {
   try {
-    const payload = insertInventarisSchema.parse(input);
-    const res = await updateInventaris(Number(payload.id), payload);
+    const payload = insertKategoriInventarisSchema.parse(input);
+    const res = await updateKategoriInventaris(Number(payload.id), payload);
     if (res?.error) throw new Error(res.error);
     return;
   } catch (err) {
