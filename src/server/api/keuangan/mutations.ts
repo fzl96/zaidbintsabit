@@ -11,7 +11,7 @@ import { eq } from "drizzle-orm";
 
 export const createKeuangan = async (values: NewKeuanganParams) => {
   const user = await currentUser();
-  if (!user || user?.role !== "ADMIN") {
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
     return { error: "Unauthorized" };
   }
   const newKeuangan = insertFinanceSchema.safeParse(values);
@@ -35,7 +35,7 @@ export const updateKeuangan = async (
   values: UpdateKeuanganParams
 ) => {
   const user = await currentUser();
-  if (!user || user?.role !== "ADMIN") {
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
     return { error: "Unauthorized" };
   }
   const updateKeuangan = insertFinanceSchema.safeParse(values);
@@ -67,7 +67,8 @@ export const updateKeuangan = async (
 
 export const deleteKeuangan = async (id: KeuanganId) => {
   const user = await currentUser();
-  if (!user || user?.role !== "ADMIN") {
+
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
     return { error: "Unauthorized" };
   }
 

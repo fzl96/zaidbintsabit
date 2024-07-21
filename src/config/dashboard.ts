@@ -92,6 +92,19 @@ export const sidebarNavItems: SidebarNavItem[] = [
     ],
   },
   {
+    title: "Info Tahsin",
+    items: [
+      {
+        title: "Jadwal Tahsin",
+        href: "/dashboard/jadwal-tahsin",
+      },
+      {
+        title: "Anggota Tahsin",
+        href: "/dashboard/anggota-tahsin",
+      },
+    ],
+  },
+  {
     title: "Data Masjid",
     items: [
       {

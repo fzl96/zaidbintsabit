@@ -6,6 +6,7 @@ import {
   inventarisRelations,
 } from "./inventaris";
 import { jadwalSholat } from "./jadwal-sholat";
+import { anggotaTahsin, jadwalTahsin } from "./tahsin";
 
 export {
   users,
@@ -14,4 +15,6 @@ export {
   kategoriInventaris,
   inventarisRelations,
   jadwalSholat,
+  anggotaTahsin,
+  jadwalTahsin,
 };
