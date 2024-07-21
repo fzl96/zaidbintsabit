@@ -40,6 +40,33 @@ export async function getKeuangan({
   });
 }
 
+export async function getKeuanganSaldo({
+  kategori,
+}: {
+  kategori: "infaq" | "yatim" | "ramadhan";
+}) {
+  const user = await currentUser();
+
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
+    throw new Error("Unauthorized");
+  }
+
+  const data = await db.query.keuangan.findMany({
+    where: (keuangan, { eq }) => eq(keuangan.kategori, kategori),
+  });
+
+  const saldo = data.reduce((acc, curr) => {
+    if (curr.tipe === "pemasukan") {
+      return acc + curr.jumlah;
+    } else if (curr.tipe === "pengeluaran") {
+      return acc - curr.jumlah;
+    }
+    return acc;
+  }, 0);
+
+  return saldo;
+}
+
 export async function getKeuanganTotalPages({
   kategori,
   tipe,

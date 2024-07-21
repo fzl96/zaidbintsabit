@@ -1,21 +1,19 @@
 import {
   getKeuangan,
   getKeuanganTotalPages,
-  getKeuanganSaldo,
 } from "@/server/api/keuangan/queries";
 import { FinanceTable } from "../../_components/table";
 import { columns } from "./columns";
 
-export async function AnakYatimTable({
+export async function InfaqMasjidTable({
   page,
   tipe,
 }: {
   page: number;
   tipe: "semua" | "pemasukan" | "pengeluaran";
 }) {
-  const data = await getKeuangan({ page, kategori: "yatim", tipe });
-  const totalPages = await getKeuanganTotalPages({ kategori: "yatim", tipe });
-  const saldo = await getKeuanganSaldo({ kategori: "yatim" });
+  const data = await getKeuangan({ page, kategori: "infaq", tipe });
+  const totalPages = await getKeuanganTotalPages({ kategori: "infaq", tipe });
 
   return (
     <FinanceTable
@@ -24,7 +22,6 @@ export async function AnakYatimTable({
       totalPages={totalPages}
       page={page}
       tipe={tipe}
-      saldo={saldo}
     />
   );
 }

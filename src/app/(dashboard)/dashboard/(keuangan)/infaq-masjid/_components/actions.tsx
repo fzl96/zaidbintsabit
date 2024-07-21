@@ -10,8 +10,8 @@ export function CreateInfaqAnakYatim() {
 
   return (
     <DrawerDialog
-      title="Tambah Infaq Anak Yatim"
-      description="Isi form untuk menambah data infaq anak yatim baru"
+      title="Tambah Infaq Masjid"
+      description="Isi form untuk menambah data infaq masjid baru"
       trigger="add"
       open={open}
       setOpen={setOpen}
@@ -19,7 +19,7 @@ export function CreateInfaqAnakYatim() {
       <FinanceForm
         action="create"
         close={() => setOpen(false)}
-        kategori="yatim"
+        kategori="infaq"
       />
     </DrawerDialog>
   );
@@ -29,15 +29,15 @@ export function UpdateFinance({ finance }: { finance: Keuangan }) {
   const [open, setOpen] = useState(false);
   return (
     <DrawerDialog
-      title={`Edit Data Infaq Anak Yatim`}
-      description={`Isi form untuk mengubah data infaq anak yatim ini ini`}
+      title={`Edit Data Infaq Masjid`}
+      description={`Isi form untuk mengubah data infaq masjid ini ini`}
       trigger="edit"
       open={open}
       setOpen={setOpen}
     >
       <FinanceForm
         keuanganId={finance.id}
-        kategori="yatim"
+        kategori="infaq"
         keuangan={finance}
         action="update"
         close={() => setOpen(false)}
@@ -51,14 +51,14 @@ export function DeleteFinance({ keuanganId }: { keuanganId: KeuanganId }) {
 
   return (
     <DrawerDialog
-      title={`Hapus Data Infaq Anak Yatim`}
-      description={`Apakah anda yakin ingin menghapus data data infaq anak yatim ini?`}
+      title={`Hapus Data Infaq Masjid`}
+      description={`Apakah anda yakin ingin menghapus data data infaq masjid ini?`}
       trigger="delete"
       open={open}
       setOpen={setOpen}
     >
       <FinanceForm
-        kategori="yatim"
+        kategori="infaq"
         keuanganId={keuanganId}
         action="delete"
         close={() => setOpen(false)}

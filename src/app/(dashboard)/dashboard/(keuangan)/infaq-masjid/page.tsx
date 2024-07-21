@@ -5,15 +5,15 @@ import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { CreateInfaqAnakYatim } from "./_components/actions";
 import { TableLoader } from "@/components/table-loader";
-import { AnakYatimTable } from "./_components/table-anak-yatim";
+import { InfaqMasjidTable } from "./_components/infaq-masjid-table";
 import { TypeFilter } from "../_components/type-filter";
 
 export const dynamic = "force";
 export const metadata: Metadata = {
-  title: "Infaq Anak Yatim",
+  title: "Infaq Masjid",
 };
 
-export default function InfaqAnakYatimPage({
+export default function InfaqMasjidPage({
   searchParams,
 }: {
   searchParams: {
@@ -34,16 +34,16 @@ export default function InfaqAnakYatimPage({
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Infaq Anak Yatim", href: "/dashboard/infaq-anak-yatim" },
+          { title: "Infaq Masjid", href: "/dashboard/infaq-masjid" },
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Infaq Anak Yatim">
+        <PageTitle title="Infaq Masjid">
           <CreateInfaqAnakYatim />
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>
-          <AnakYatimTable
+          <InfaqMasjidTable
             page={currentPage}
             tipe={tipe as "semua" | "pengeluaran" | "pemasukan"}
           />
