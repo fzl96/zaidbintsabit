@@ -74,7 +74,21 @@ export function JadwalSholatForm({
         onSubmit={form.handleSubmit(handleSubmit)}
         className="space-y-3 md:mx-0 mx-3"
       >
-        <div className="space-y-2">
+        <div className="space-y-4">
+          <FormField
+            control={form.control}
+            name="imam"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel className="text-left">Imam</FormLabel>
+                <FormControl>
+                  {/* @ts-ignore */}
+                  <Input {...field} placeholder="Masukkan nama imam" required />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="tanggal"

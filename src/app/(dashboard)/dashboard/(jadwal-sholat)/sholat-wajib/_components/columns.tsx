@@ -12,6 +12,10 @@ export const columns: ColumnDef<JadwalSholat>[] = [
     header: "Nama",
   },
   {
+    accessorKey: "imam",
+    header: "Imam",
+  },
+  {
     accessorKey: "tanggal",
     header: "Tanggal dan waktu",
     cell: ({ row }) => {
