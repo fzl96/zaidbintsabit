@@ -4,11 +4,11 @@ import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { Suspense } from "react";
 import { TableLoader } from "@/components/table-loader";
-import { SholatWajibTable } from "./_components/table";
+import { SholatJumatTable } from "./_components/table";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "Jadwal Sholat Wajib",
+  title: "Jadwal Sholat Jum'at",
 };
 
 export default function JadwalSholatWajibPage() {
@@ -17,15 +17,15 @@ export default function JadwalSholatWajibPage() {
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Jadwal Sholat Wajib", href: "/dashboard/sholat-wajib" },
+          { title: "Jadwal Sholat Jum'at", href: "/dashboard/sholat-jumat" },
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Jadwal Sholat Wajib" />
+        <PageTitle title="Jadwal Sholat Jum'at" />
       </div>
 
       <Suspense fallback={<TableLoader />}>
-        <SholatWajibTable />
+        <SholatJumatTable />
       </Suspense>
     </Wrapper>
   );
