@@ -13,9 +13,12 @@ export async function InfaqMasjidTable({
   page: number;
   tipe: "semua" | "pemasukan" | "pengeluaran";
 }) {
-  const data = await getKeuangan({ page, kategori: "infaq", tipe });
-  const totalPages = await getKeuanganTotalPages({ kategori: "infaq", tipe });
-  const saldo = await getKeuanganSaldo({ kategori: "infaq" });
+  const data = await getKeuangan({ page, kategori: "ramadhan", tipe });
+  const totalPages = await getKeuanganTotalPages({
+    kategori: "ramadhan",
+    tipe,
+  });
+  const saldo = await getKeuanganSaldo({ kategori: "ramadhan" });
 
   return (
     <FinanceTable

@@ -5,13 +5,13 @@ import { FinanceForm } from "../../_components/form";
 import { useState } from "react";
 import { KeuanganId, type Keuangan } from "@/server/db/schema/keuangan";
 
-export function CreateInfaqMasjid() {
+export function CreateInfaqRamadhan() {
   const [open, setOpen] = useState(false);
 
   return (
     <DrawerDialog
-      title="Tambah Infaq Masjid"
-      description="Isi form untuk menambah data infaq masjid baru"
+      title="Tambah Infaq Ramadhan"
+      description="Isi form untuk menambah data infaq ramadhan baru"
       trigger="add"
       open={open}
       setOpen={setOpen}
@@ -19,7 +19,7 @@ export function CreateInfaqMasjid() {
       <FinanceForm
         action="create"
         close={() => setOpen(false)}
-        kategori="infaq"
+        kategori="ramadhan"
       />
     </DrawerDialog>
   );
@@ -29,15 +29,15 @@ export function UpdateFinance({ finance }: { finance: Keuangan }) {
   const [open, setOpen] = useState(false);
   return (
     <DrawerDialog
-      title={`Edit Data Infaq Masjid`}
-      description={`Isi form untuk mengubah data infaq masjid ini`}
+      title={`Edit Data Infaq Ramadhan`}
+      description={`Isi form untuk mengubah data infaq ramadhan ini`}
       trigger="edit"
       open={open}
       setOpen={setOpen}
     >
       <FinanceForm
         keuanganId={finance.id}
-        kategori="infaq"
+        kategori="ramadhan"
         keuangan={finance}
         action="update"
         close={() => setOpen(false)}
@@ -51,14 +51,14 @@ export function DeleteFinance({ keuanganId }: { keuanganId: KeuanganId }) {
 
   return (
     <DrawerDialog
-      title={`Hapus Data Infaq Masjid`}
-      description={`Apakah anda yakin ingin menghapus data data infaq masjid ini?`}
+      title={`Hapus Data Infaq Ramadhan`}
+      description={`Apakah anda yakin ingin menghapus data data infaq ramadhan ini?`}
       trigger="delete"
       open={open}
       setOpen={setOpen}
     >
       <FinanceForm
-        kategori="infaq"
+        kategori="ramadhan"
         keuanganId={keuanganId}
         action="delete"
         close={() => setOpen(false)}

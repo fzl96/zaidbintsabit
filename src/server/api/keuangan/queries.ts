@@ -63,6 +63,8 @@ export async function getKeuanganSaldo({
     }
     return acc;
   }, 0);
+  
+  console.log(saldo)
 
   return saldo;
 }

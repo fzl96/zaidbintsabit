@@ -3,10 +3,9 @@ import { Suspense } from "react";
 import { Wrapper } from "@/app/(dashboard)/_components/wrapper";
 import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
-import { CreateInfaqAnakYatim } from "./_components/actions";
+import { CreateInfaqMasjid } from "./_components/actions";
 import { TableLoader } from "@/components/table-loader";
 import { InfaqMasjidTable } from "./_components/infaq-masjid-table";
-import { TypeFilter } from "../_components/type-filter";
 
 export const dynamic = "force";
 export const metadata: Metadata = {
@@ -39,7 +38,7 @@ export default function InfaqMasjidPage({
       />
       <div className="space-y-8">
         <PageTitle title="Infaq Masjid">
-          <CreateInfaqAnakYatim />
+          <CreateInfaqMasjid />
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>
