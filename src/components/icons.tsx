@@ -38,9 +38,11 @@ import {
   Facebook,
   Youtube,
   UserCheck,
+  Folders,
 } from "lucide-react";
 
 export const Icons = {
+  folders: Folders,
   userCheck: UserCheck,
   instagram: Instagram,
   facebook: Facebook,
