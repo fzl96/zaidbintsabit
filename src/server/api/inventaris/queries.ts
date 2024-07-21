@@ -73,6 +73,18 @@ export async function getKategoriInventaris({
   return data;
 }
 
+export async function getAllKategoriInventaris() {
+  const user = await currentUser();
+
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
+    throw new Error("Unauthorized");
+  }
+
+  const data = await db.query.kategoriInventaris.findMany();
+
+  return data;
+}
+
 export async function getKategoriInventarisPages({ query }: { query: string }) {
   const user = await currentUser();
 
