@@ -7,7 +7,6 @@ import { TableLoader } from "@/components/table-loader";
 import { KategoriInventarisTable } from "./_components/table";
 import { CreateKategoriInventaris } from "./_components/actions";
 
-export const dynamic = "force";
 export const metadata: Metadata = {
   title: "Kategori Inventaris",
 };
@@ -28,7 +27,10 @@ export default function KategoriInventarisPage({
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Kategori Inventaris", href: "/dashboard/kategori-inventaris" },
+          {
+            title: "Kategori Inventaris",
+            href: "/dashboard/kategori-inventaris",
+          },
         ]}
       />
       <div className="space-y-8">

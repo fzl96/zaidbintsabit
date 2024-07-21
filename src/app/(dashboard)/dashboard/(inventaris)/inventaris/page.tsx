@@ -9,7 +9,6 @@ import { InventarisTable } from "./_components/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CreateInventarisButton } from "./_components/create-button";
 
-export const dynamic = "force";
 export const metadata: Metadata = {
   title: "Inventaris",
 };

@@ -7,7 +7,6 @@ import { CreateInfaqMasjid } from "./_components/actions";
 import { TableLoader } from "@/components/table-loader";
 import { InfaqMasjidTable } from "./_components/infaq-masjid-table";
 
-export const dynamic = "force";
 export const metadata: Metadata = {
   title: "Infaq Masjid",
 };

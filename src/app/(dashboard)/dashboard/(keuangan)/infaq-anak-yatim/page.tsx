@@ -8,7 +8,6 @@ import { TableLoader } from "@/components/table-loader";
 import { AnakYatimTable } from "./_components/table-anak-yatim";
 import { TypeFilter } from "../_components/type-filter";
 
-export const dynamic = "force";
 export const metadata: Metadata = {
   title: "Infaq Anak Yatim",
 };
