@@ -2,7 +2,7 @@ import {
   timestamp,
   varchar,
   serial,
-  integer,
+  boolean,
   pgEnum,
   pgTable,
 } from "drizzle-orm/pg-core";
@@ -26,6 +26,7 @@ export const jadwalSholat = pgTable("jadwal_sholat", {
   tanggal: timestamp("tanggal").notNull().defaultNow(),
   judul: varchar("judul", { length: 255 }),
   khatib: varchar("khatib", { length: 255 }),
+  display: boolean("display").notNull().default(true),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
