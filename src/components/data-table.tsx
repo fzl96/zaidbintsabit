@@ -4,6 +4,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getGroupedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -20,6 +21,7 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel<TData>(),
+    getGroupedRowModel: getGroupedRowModel(),
   });
 
   return (
@@ -27,19 +29,39 @@ export function DataTable<TData, TValue>({
       <table className="w-full text-gray-900">
         <thead className="rounded-lg text-left text-sm font-normal">
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <tr key={headerGroup.id} className="">
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="px-3 py-5 font-medium">
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
+                <th
+                  colSpan={header.colSpan}
+                  key={header.id}
+                  className="px-3 py-5 font-medium "
+                >
+                  {header.isPlaceholder ? null : (
+                    <div className="flex items-center gap-2">
+                      {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
+                    </div>
+                  )}
                 </th>
               ))}
             </tr>
           ))}
+          {/* // {table.getHeaderGroups().map((headerGroup) => (
+          //   <tr key={headerGroup.id}>
+          //     {headerGroup.headers.map((header) => (
+          //       <th key={header.id} className="px-3 py-5 font-medium">
+          //         {header.isPlaceholder
+          //           ? null
+          //           : flexRender(
+          //               header.column.columnDef.header,
+          //               header.getContext()
+          //             )}
+          //       </th>
+          //     ))}
+          //   </tr>
+          // ))} */}
         </thead>
         <tbody className="bg-white">
           {table.getRowModel().rows?.length ? (

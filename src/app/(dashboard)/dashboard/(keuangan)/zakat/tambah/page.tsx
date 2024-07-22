@@ -2,27 +2,27 @@ import { Metadata } from "next";
 import { Wrapper } from "@/app/(dashboard)/_components/wrapper";
 import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
-import { PengurusForm } from "../_components/form";
+import { ZakatForm } from "../_components/form";
 
 export const metadata: Metadata = {
-  title: "Tambah Pengurus Masjid",
+  title: "Tambah Zakat Masjid",
 };
 
-export default function TambahPengurusPage() {
+export default function TambahZakatPage() {
   return (
     <Wrapper>
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Pengurus Masjid", href: "/dashboard/pengurus" },
-          { title: "Tambah", href: "/dashboard/pengurus/tambah" },
+          { title: "Zakat", href: "/dashboard/zakat" },
+          { title: "Tambah", href: "/dashboard/zakat/tambah" },
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Tambah Pengurus Masjid" />
+        <PageTitle title="Tambah Zakat Masjid" />
 
         <div>
-          <PengurusForm action="create" />
+          <ZakatForm action="create" />
         </div>
       </div>
     </Wrapper>

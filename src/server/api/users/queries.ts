@@ -1,7 +1,7 @@
-import { currentRole, currentUser } from "@/lib/auth";
+import { currentUser } from "@/lib/auth";
 import { db } from "@/server/db";
 import { users } from "@/server/db/schema";
-import { eq, sql, ilike, or, desc } from "drizzle-orm";
+import { eq, sql, ilike, or } from "drizzle-orm";
 
 const LIMIT = 6;
 

@@ -151,7 +151,7 @@ export function PengurusForm({
 
   return (
     <Form {...form}>
-      <form className="p-5 mx-5 border rounded-lg" onSubmit={handleSubmit}>
+      <form className="p-5 border rounded-lg" onSubmit={handleSubmit}>
         <div className="grid gap-3">
           <Label htmlFor="foto">Foto</Label>
           <SingleImageDropzone

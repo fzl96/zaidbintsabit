@@ -53,6 +53,10 @@ export const sidebarNavItems: SidebarNavItem[] = [
         title: "Infaq Ramadhan",
         href: "/dashboard/infaq-ramadhan",
       },
+      {
+        title: "Zakat",
+        href: "/dashboard/zakat",
+      },
     ],
   },
   {

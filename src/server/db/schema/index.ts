@@ -9,6 +9,7 @@ import { jadwalSholat } from "./jadwal-sholat";
 import { anggotaTahsin, jadwalTahsin } from "./tahsin";
 import { pengurusMasjid } from "./pengurus";
 import { posts } from "./post";
+import { zakat } from "./zakat";
 
 export {
   users,
@@ -21,4 +22,5 @@ export {
   jadwalTahsin,
   pengurusMasjid,
   posts,
+  zakat,
 };

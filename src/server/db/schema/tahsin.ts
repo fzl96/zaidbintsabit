@@ -1,5 +1,4 @@
 import { timestamp, varchar, serial, pgTable } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { timestamps } from "@/lib/utils";
 import { z } from "zod";
