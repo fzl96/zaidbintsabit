@@ -82,7 +82,6 @@ export function AnggotaTahsinForm({
       if (res?.error) after("update", res.error);
       after("update");
     } else {
-      console.log(values);
       const res = await createAnggotaTahsinAction(values);
       if (res?.error) after("create", res.error);
       after("create");

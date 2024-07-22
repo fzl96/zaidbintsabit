@@ -83,3 +83,14 @@
   touch-action: pan-y;
   margin-left: calc(var(--slide-spacing) * -1);
 }
+
+.tiptap {
+   a {
+    color: "#2563ea";
+    cursor: pointer;
+
+    &:hover {
+      color: "#3a72ec";
+    }
+  }
+}

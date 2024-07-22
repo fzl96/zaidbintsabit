@@ -92,7 +92,6 @@ export function JadwalTahsinForm({
       if (res?.error) after("update", res.error);
       after("update");
     } else {
-      console.log(values);
       const res = await createJadwalTahsinAction(values);
       if (res?.error) after("create", res.error);
       after("create");

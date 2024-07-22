@@ -52,7 +52,6 @@ export function InventarisForm({
   kategori,
   close,
 }: FinanceFormProps) {
-  console.log(kategori);
   const [isPending, startTransition] = useTransition();
   const editing = action === "update";
 

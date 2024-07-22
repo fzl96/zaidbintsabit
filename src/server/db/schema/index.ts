@@ -8,6 +8,7 @@ import {
 import { jadwalSholat } from "./jadwal-sholat";
 import { anggotaTahsin, jadwalTahsin } from "./tahsin";
 import { pengurusMasjid } from "./pengurus";
+import { posts } from "./post";
 
 export {
   users,
@@ -19,4 +20,5 @@ export {
   anggotaTahsin,
   jadwalTahsin,
   pengurusMasjid,
+  posts,
 };

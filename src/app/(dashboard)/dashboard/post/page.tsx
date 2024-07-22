@@ -4,11 +4,12 @@ import { Wrapper } from "@/app/(dashboard)/_components/wrapper";
 import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { TableLoader } from "@/components/table-loader";
-import { CreateJadwalTahsin } from "./_components/actions";
-import { JadwalTahsinTable } from "./_components/table";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { PostTable } from "./_components/table";
 
 export const metadata: Metadata = {
-  title: "Jadwal Tahsin",
+  title: "Post",
 };
 
 export default function JadwalTahsinPage({
@@ -16,25 +17,29 @@ export default function JadwalTahsinPage({
 }: {
   searchParams: {
     page?: string;
+    query?: string;
   };
 }) {
   const currentPage = Number(searchParams?.page ?? 1);
+  const query = searchParams.query ?? "";
 
   return (
     <Wrapper>
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Jadwal Tahsin", href: "/dashboard/jadwal-tahsin" },
+          { title: "Post", href: "/dashboard/post" },
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Jadwal Tahsin">
-          <CreateJadwalTahsin />
+        <PageTitle title="Post">
+          <Link href="/dashboard/post/tambah" className={buttonVariants()}>
+            Tambah
+          </Link>
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>
-          <JadwalTahsinTable page={currentPage} />
+          <PostTable page={currentPage} query={query} />
         </Suspense>
       </div>
     </Wrapper>
