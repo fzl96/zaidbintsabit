@@ -8,7 +8,7 @@ import { SholatIedTable } from "./_components/table";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "Jadwal Sholat Jum'at",
+  title: "Jadwal Ied",
 };
 
 export default function JadwalSholatWajibPage() {
@@ -17,11 +17,11 @@ export default function JadwalSholatWajibPage() {
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Jadwal Sholat Jum'at", href: "/dashboard/sholat-jumat" },
+          { title: "Jadwal Sholat Ied", href: "/dashboard/sholat-ied" },
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Jadwal Sholat Jum'at" />
+        <PageTitle title="Jadwal Sholat Ied" />
       </div>
 
       <Suspense fallback={<TableLoader />}>

@@ -53,6 +53,7 @@ export function JadwalSholatForm({
   });
 
   const handleSubmit = async (values: UpdateJadwalSholatParams) => {
+    console.log(values);
     const res = await updateJadwalSholatAction({
       id: jadwalSholatId,
       ...values,

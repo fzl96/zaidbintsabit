@@ -30,3 +30,7 @@ export function formatDate(date: Date) {
 export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export function removeHtmlTags(string: string) {
+  return string.replace(/(<([^>]+)>)/gi, "");
+}
