@@ -42,14 +42,17 @@ export function MobileNavToggle({ loggedIn }: { loggedIn?: boolean }) {
         <Link href="/#jadwal-sholat">
           <DropdownMenuItem>Jadwal Sholat</DropdownMenuItem>
         </Link>
-        <Link href="/post/kegiatan">
-          <DropdownMenuItem>Kegiatan</DropdownMenuItem>
+        <Link href="/post/aktivitas">
+          <DropdownMenuItem>Aktivitas</DropdownMenuItem>
         </Link>
         <Link href="/post/pengumuman">
           <DropdownMenuItem>Pengumuman</DropdownMenuItem>
         </Link>
         <Link href="/post/artikel">
           <DropdownMenuItem>Artikel</DropdownMenuItem>
+        </Link>
+        <Link href="/post/kajian">
+          <DropdownMenuItem>Kajian</DropdownMenuItem>
         </Link>
         <DropdownMenuSeparator />
         {!loggedIn ? (

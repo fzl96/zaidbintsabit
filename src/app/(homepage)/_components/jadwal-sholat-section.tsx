@@ -16,8 +16,8 @@ export async function JadwalSholatSection() {
     <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-40">
       <div className="rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-8 space-y-10">
         <div className="space-y-5">
-          <h2 className="text-3xl text-center font-medium">
-            Jadwal Sholat {formatDate(date)}
+          <h2 className="md:text-3xl text-lg text-center flex md:flex-row flex-col items-center font-medium justify-center">
+            Jadwal Sholat <span>{formatDate(date)}</span>
           </h2>
           <div className="grid md:grid-cols-5 gap-4">
             {data
@@ -47,7 +47,7 @@ export async function JadwalSholatSection() {
 
         {jumat && (
           <div className="space-y-5">
-            <h2 className="text-3xl text-center font-medium">
+            <h2 className="md:text-3xl text-lg text-center font-medium">
               Jadwal Sholat Jum'at
             </h2>
             <div className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10">
@@ -64,7 +64,7 @@ export async function JadwalSholatSection() {
 
         {ied.length > 0 && (
           <div className="space-y-5">
-            <h2 className="text-3xl text-center font-medium">
+            <h2 className="md:text-3xl text-lg text-center font-medium">
               Jadwal Sholat Ied
             </h2>
             <div className="flex md:flex-row flex-col gap-4 w-full">

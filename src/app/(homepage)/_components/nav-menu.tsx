@@ -22,7 +22,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Kegiatan",
-    href: "/post/kegiatan",
+    href: "/post/aktivitas",
     description:
       "Informasi terkait kegiatan-kegiatan yang dilaksanakan di Masjid Zaid bin Tsabit.",
   },
@@ -105,7 +105,7 @@ export function NavMenu() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="hover:bg-transparent">
-          <Link href="/post/kegiatan" legacyBehavior passHref>
+          <Link href="/post/aktivitas" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
@@ -125,6 +125,18 @@ export function NavMenu() {
               )}
             >
               Artikel
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem className="hover:bg-transparent">
+          <Link href="/post/kajian" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "bg-transparent hover:bg-transparent"
+              )}
+            >
+              Kajian
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
