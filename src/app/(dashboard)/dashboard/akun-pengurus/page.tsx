@@ -6,13 +6,13 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { TableLoader } from "@/components/table-loader";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { PenguruTable } from "./_components/table";
+import { AkunPengurusTable } from "./_components/table";
 
 export const metadata: Metadata = {
-  title: "Pengurus Masjid",
+  title: "Akun Pengurus",
 };
 
-export default function PengurusPage({
+export default function AkunPengurusPage({
   searchParams,
 }: {
   searchParams: {
@@ -28,18 +28,22 @@ export default function PengurusPage({
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Pengurus Masjid", href: "/dashboard/pengurus" },
+          { title: "Akun Pengurus", href: "/dashboard/akun-pengurus" },
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Pengurus Masjid">
-          <Link href="/dashboard/pengurus/tambah" className={buttonVariants()}>
+        <PageTitle title="Akun Pengurus">
+          <Link
+            href="/dashboard/akun-pengurus/tambah"
+            className={buttonVariants()}
+          >
             Tambah
           </Link>
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>
-          <PenguruTable page={currentPage} query={query} />
+          <AkunPengurusTable page={currentPage} query={query} />
+          {/* <PenguruTable page={currentPage} query={query} /> */}
         </Suspense>
       </div>
     </Wrapper>

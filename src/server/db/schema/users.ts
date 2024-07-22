@@ -1,6 +1,7 @@
 import { timestamp, pgEnum, pgTable, text } from "drizzle-orm/pg-core";
 import { createId } from "@paralleldrive/cuid2";
 import { z } from "zod";
+import { createSelectSchema, createInsertSchema } from "drizzle-zod";
 
 export const roleEnum = pgEnum("role", ["ADMIN", "PENGURUS", "USER"]);
 
@@ -14,13 +15,19 @@ export const users = pgTable("user", {
   role: roleEnum("role").default("PENGURUS").notNull(),
 });
 
-export const updateUserNameParams = z.object({
-  name: z.string().min(3).max(50),
+export const akunSchema = z.object({
+  id: z.string().optional(),
+  name: z.string().nullish(),
+  username: z.string().min(4, { message: "Username minimal 4 karakter" }),
+  password: z.string().optional(),
+  confirmPassword: z.string().optional(),
+  role: z.enum(["ADMIN", "PENGURUS", "USER"]),
 });
-export const updatePasswordParams = z.object({
-  currentPassword: z.string(),
-  newPassword: z.string().min(6).max(255),
-  confirmPassword: z.string().min(6).max(255),
-});
-export type UpdateUserNameParams = z.infer<typeof updateUserNameParams>;
-export type UpdatePasswordParams = z.infer<typeof updatePasswordParams>;
+
+export type User = {
+  id: string;
+  name: string | null;
+  username: string;
+  role: "ADMIN" | "PENGURUS" | "USER";
+};
+export type AkunParams = z.infer<typeof akunSchema>;

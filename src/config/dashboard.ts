@@ -124,7 +124,7 @@ export const sidebarNavItems: SidebarNavItem[] = [
     items: [
       {
         title: "Akun Pengurus",
-        href: "/dashboard/akun",
+        href: "/dashboard/akun-pengurus",
         icon: "user",
       },
       {
