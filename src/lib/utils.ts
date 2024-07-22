@@ -26,3 +26,7 @@ export function formatDate(date: Date) {
   });
   return newDate;
 }
+
+export function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

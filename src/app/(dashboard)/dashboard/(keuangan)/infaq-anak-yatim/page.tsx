@@ -6,7 +6,8 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { CreateInfaqAnakYatim } from "./_components/actions";
 import { TableLoader } from "@/components/table-loader";
 import { AnakYatimTable } from "./_components/table-anak-yatim";
-import { TypeFilter } from "../_components/type-filter";
+import { ExportFinance } from "../_components/export";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Infaq Anak Yatim",
@@ -38,7 +39,12 @@ export default function InfaqAnakYatimPage({
       />
       <div className="space-y-8">
         <PageTitle title="Infaq Anak Yatim">
-          <CreateInfaqAnakYatim />
+          <div className="flex items-center gap-2 md:flex-row flex-col">
+            <Suspense fallback={<Skeleton className="h-10 w-20" />}>
+              <ExportFinance month={month} year={year} kategori="yatim" />
+            </Suspense>
+            <CreateInfaqAnakYatim />
+          </div>
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>

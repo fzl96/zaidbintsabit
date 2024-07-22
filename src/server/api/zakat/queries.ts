@@ -50,3 +50,27 @@ export async function getZakatTotalPages({ query }: { query: string }) {
 
   return countRes?.count ? Math.ceil(countRes.count / LIMIT) : 1;
 }
+
+export async function getExportZakatData({
+  month,
+  year,
+}: {
+  month: number;
+  year: number;
+}) {
+  const user = await currentUser();
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
+    throw new Error("Unauthorized");
+  }
+
+  const data = await db.query.zakat.findMany({
+    where: (zakat, { and, gte, lte }) =>
+      and(
+        gte(zakat.createdAt, new Date(year, month - 1, 1)),
+        lte(zakat.createdAt, new Date(year, month, 1))
+      ),
+    orderBy: (zakat, { desc }) => desc(zakat.createdAt),
+  });
+
+  return data;
+}

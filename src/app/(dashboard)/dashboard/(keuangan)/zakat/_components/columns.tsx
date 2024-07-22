@@ -3,12 +3,12 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { type Zakat } from "@/server/db/schema/zakat";
 import { formatCurrency } from "@/lib/utils";
-import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { DeleteZakat } from "./actions";
 
 export const columns: ColumnDef<Zakat>[] = [
   {
@@ -81,6 +81,7 @@ export const columns: ColumnDef<Zakat>[] = [
           >
             <Pencil className="h-4 w-4" />
           </Link>
+          <DeleteZakat zakatId={row.original.id} />
         </div>
       );
     },

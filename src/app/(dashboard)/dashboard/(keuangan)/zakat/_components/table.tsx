@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getZakat, getZakatTotalPages } from "@/server/api/zakat/queries";
+import { DeleteZakat } from "./actions";
 import { columns } from "./columns";
 import { TablePagination } from "@/components/pagination";
 import { DataTable } from "@/components/data-table";
@@ -54,7 +55,7 @@ export async function ZakatTable({
                     >
                       <Pencil className="h-4 w-4" />
                     </Link>
-                    {/* <DeletePengurus pengurusId={pengurus.id} /> */}
+                    <DeleteZakat zakatId={zakat.id} />
                   </div>
                 </div>
               </div>

@@ -102,3 +102,31 @@ export async function getKeuanganTotalPages({
 
   return countRes?.count ? Math.ceil(countRes.count / LIMIT) : 1;
 }
+
+export async function getExportKeuanganData({
+  month,
+  year,
+  kategori,
+}: {
+  month: number;
+  year: number;
+  kategori: "infaq" | "yatim" | "ramadhan";
+}) {
+  const user = await currentUser();
+
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
+    throw new Error("Unauthorized");
+  }
+
+  const data = await db.query.keuangan.findMany({
+    where: (keuangan, { and, eq, gte, lte }) =>
+      and(
+        eq(keuangan.kategori, kategori),
+        gte(keuangan.createdAt, new Date(year, month - 1, 1)),
+        lte(keuangan.createdAt, new Date(year, month, 1))
+      ),
+    orderBy: (keuangan, { desc }) => desc(keuangan.createdAt),
+  });
+
+  return data;
+}

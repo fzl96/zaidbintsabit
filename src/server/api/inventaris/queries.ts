@@ -101,3 +101,17 @@ export async function getKategoriInventarisPages({ query }: { query: string }) {
 
   return countRes?.count ? Math.ceil(countRes.count / LIMIT) : 1;
 }
+
+export async function getExportInventarisData() {
+  const user = await currentUser();
+
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
+    throw new Error("Unauthorized");
+  }
+
+  const data = await db.query.inventaris.findMany({
+    orderBy: (inventaris, { desc }) => desc(inventaris.createdAt),
+  });
+
+  return data;
+}

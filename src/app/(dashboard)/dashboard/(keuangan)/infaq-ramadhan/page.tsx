@@ -6,6 +6,8 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { CreateInfaqRamadhan } from "./_components/actions";
 import { TableLoader } from "@/components/table-loader";
 import { InfaqMasjidTable } from "./_components/infaq-masjid-table";
+import { ExportFinance } from "../_components/export";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Infaq Ramdhan",
@@ -36,8 +38,13 @@ export default function InfaqRamadhanPage({
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Infaq Masjid">
-          <CreateInfaqRamadhan />
+        <PageTitle title="Infaq Ramadhan">
+          <div className="flex items-center gap-2 md:flex-row flex-col">
+            <Suspense fallback={<Skeleton className="h-10 w-20" />}>
+              <ExportFinance month={month} year={year} kategori="ramadhan" />
+            </Suspense>
+            <CreateInfaqRamadhan />
+          </div>
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>

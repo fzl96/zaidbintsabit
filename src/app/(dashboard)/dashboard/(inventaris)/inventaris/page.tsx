@@ -4,10 +4,10 @@ import { Wrapper } from "@/app/(dashboard)/_components/wrapper";
 import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { TableLoader } from "@/components/table-loader";
-import { CreateInventaris } from "./_components/actions";
 import { InventarisTable } from "./_components/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CreateInventarisButton } from "./_components/create-button";
+import { ExportInventaris } from "./_components/export";
 
 export const metadata: Metadata = {
   title: "Inventaris",
@@ -34,13 +34,17 @@ export default function InventarisPage({
       />
       <div className="space-y-8">
         <PageTitle title="Inventaris">
-          <Suspense fallback={<Skeleton className="h-4 w-10" />}>
-            <CreateInventarisButton />
-          </Suspense>
+          <div className="flex items-center gap-2 md:flex-row flex-col">
+            <Suspense fallback={<Skeleton className="h-10 w-20" />}>
+              <ExportInventaris />
+            </Suspense>
+            <Suspense fallback={<Skeleton className="h-10 w-20" />}>
+              <CreateInventarisButton />
+            </Suspense>
+          </div>
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>
-          {/* <KategoriInventarisTable page={currentPage} query={query} /> */}
           <InventarisTable page={currentPage} query={query} />
         </Suspense>
       </div>
