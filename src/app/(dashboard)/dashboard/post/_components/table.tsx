@@ -7,6 +7,7 @@ import { columns } from "./columns";
 import { TablePagination } from "@/components/pagination";
 import { DataTable } from "@/components/data-table";
 import { SearchFilter } from "@/components/search-filter";
+import { DeletePost } from "./actions";
 
 export async function PostTable({
   page,
@@ -50,12 +51,7 @@ export async function PostTable({
                     >
                       <Pencil className="h-4 w-4" />
                     </Link>
-                    {/* <DeleteButton
-                    id={pgrs.id}
-                    url={pgrs.foto}
-                    page="jamaah"
-                    deleteFn={deletePengurus}
-                  /> */}
+                    <DeletePost postId={post.id} />
                   </div>
                 </div>
               </div>

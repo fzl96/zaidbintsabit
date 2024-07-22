@@ -6,6 +6,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { DeletePengurus } from "./actions";
 
 export const columns: ColumnDef<Pengurus>[] = [
   {
@@ -32,6 +33,7 @@ export const columns: ColumnDef<Pengurus>[] = [
           >
             <Pencil className="h-4 w-4" />
           </Link>
+          <DeletePengurus pengurusId={row.original.id} />
         </div>
       );
     },

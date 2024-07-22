@@ -10,6 +10,7 @@ import { columns } from "./columns";
 import { TablePagination } from "@/components/pagination";
 import { DataTable } from "@/components/data-table";
 import { SearchFilter } from "@/components/search-filter";
+import { DeletePengurus } from "./actions";
 
 export async function PenguruTable({
   page,
@@ -54,12 +55,7 @@ export async function PenguruTable({
                     >
                       <Pencil className="h-4 w-4" />
                     </Link>
-                    {/* <DeleteButton
-                    id={pgrs.id}
-                    url={pgrs.foto}
-                    page="jamaah"
-                    deleteFn={deletePengurus}
-                  /> */}
+                    <DeletePengurus pengurusId={pengurus.id} />
                   </div>
                 </div>
               </div>

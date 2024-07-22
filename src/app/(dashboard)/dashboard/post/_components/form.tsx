@@ -1,5 +1,6 @@
 "use client";
 
+import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,7 @@ import {
   type NewPostParams,
   type Post,
 } from "@/server/db/schema/post";
+import { Icons } from "@/components/icons";
 import {
   Form,
   FormControl,
@@ -45,13 +47,18 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { createPostAction, updatePostAction } from "@/server/actions/post";
+import {
+  createPostAction,
+  deletePostAction,
+  updatePostAction,
+} from "@/server/actions/post";
 
 interface PostFormProps {
   post?: Post;
   postId?: string;
   action: "create" | "update" | "delete";
-  breadCrumbs: { label: string; href: string }[];
+  breadCrumbs?: { label: string; href: string }[];
+  close?: () => void;
 }
 
 const options: { value: string; label: string }[] = [
@@ -61,7 +68,14 @@ const options: { value: string; label: string }[] = [
   { value: "kajian", label: "Kajian" },
 ];
 
-export function PostForm({ action, post, postId, breadCrumbs }: PostFormProps) {
+export function PostForm({
+  action,
+  post,
+  postId,
+  breadCrumbs,
+  close,
+}: PostFormProps) {
+  const [isPending, startTransition] = useTransition();
   const form = useForm<NewPostParams>({
     resolver: zodResolver(insertPostParams),
     mode: "onChange",
@@ -130,6 +144,43 @@ export function PostForm({ action, post, postId, breadCrumbs }: PostFormProps) {
       }
       return after("create");
     } else return;
+  }
+
+  if (action === "delete" && postId) {
+    return (
+      <form
+        className="space-y-2"
+        action={async () => await deletePostAction(postId)}
+      >
+        <Button
+          type="submit"
+          variant={"destructive"}
+          className="w-full"
+          disabled={isPending}
+          onClick={() => {
+            startTransition(async () => {
+              const res = await deletePostAction(postId);
+              // @ts-ignore
+              if (res?.error) after("delete", res.error);
+              else after("delete");
+              if (close) close();
+              return;
+            });
+          }}
+        >
+          {isPending && <Icons.spinner className="animate-spin h-4 w-4 mr-2" />}
+          Hapus
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full"
+          onClick={close}
+        >
+          Batal
+        </Button>
+      </form>
+    );
   }
 
   return (

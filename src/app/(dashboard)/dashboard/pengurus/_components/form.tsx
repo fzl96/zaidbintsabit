@@ -1,5 +1,6 @@
 "use client";
 
+import { useTransition } from "react";
 import {
   type Pengurus,
   type NewPengurusParams,
@@ -8,6 +9,7 @@ import {
 } from "@/server/db/schema/pengurus";
 import {
   createPengurusAction,
+  deletePengurusAction,
   updatePengurusAction,
 } from "@/server/actions/pengurus";
 
@@ -61,6 +63,7 @@ export function PengurusForm({
   action,
   close,
 }: PengurusFormProps) {
+  const [isPending, startTransition] = useTransition();
   const editing = action === "update";
 
   const router = useRouter();
@@ -108,6 +111,43 @@ export function PengurusForm({
     if (res?.error) return after("create", { error: res.error });
     return after("create");
   });
+
+  if (action === "delete" && pengurusId) {
+    return (
+      <form
+        className="space-y-2"
+        action={async () => await deletePengurusAction(pengurusId)}
+      >
+        <Button
+          type="submit"
+          variant={"destructive"}
+          className="w-full"
+          disabled={isPending}
+          onClick={() => {
+            startTransition(async () => {
+              const res = await deletePengurusAction(pengurusId);
+              // @ts-ignore
+              if (res?.error) after("delete", res.error);
+              else after("delete");
+              if (close) close();
+              return;
+            });
+          }}
+        >
+          {isPending && <Icons.spinner className="animate-spin h-4 w-4 mr-2" />}
+          Hapus
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full"
+          onClick={close}
+        >
+          Batal
+        </Button>
+      </form>
+    );
+  }
 
   return (
     <Form {...form}>
