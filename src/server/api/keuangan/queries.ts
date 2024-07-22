@@ -16,12 +16,6 @@ export async function getKeuangan({
   tipe: "semua" | "pengeluaran" | "pemasukan";
   // date: string;
 }) {
-  const user = await currentUser();
-
-  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
-    throw new Error("Unauthorized");
-  }
-
   if (tipe === "semua")
     return await db.query.keuangan.findMany({
       where: (keuangan, { and, eq, gte, lte }) =>
@@ -45,12 +39,6 @@ export async function getKeuanganSaldo({
 }: {
   kategori: "infaq" | "yatim" | "ramadhan";
 }) {
-  const user = await currentUser();
-
-  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
-    throw new Error("Unauthorized");
-  }
-
   const data = await db.query.keuangan.findMany({
     where: (keuangan, { eq }) => eq(keuangan.kategori, kategori),
   });
@@ -64,8 +52,6 @@ export async function getKeuanganSaldo({
     return acc;
   }, 0);
 
-  console.log(saldo);
-
   return saldo;
 }
 
@@ -76,12 +62,6 @@ export async function getKeuanganTotalPages({
   kategori: "infaq" | "yatim" | "ramadhan";
   tipe: "semua" | "pengeluaran" | "pemasukan";
 }) {
-  const user = await currentUser();
-
-  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
-    throw new Error("Unauthorized");
-  }
-
   if (tipe === "semua") {
     const [countRes] = await db
       .select({

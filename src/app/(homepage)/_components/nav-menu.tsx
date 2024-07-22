@@ -34,6 +34,30 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
+const keuanganComponents: {
+  title: string;
+  href: string;
+  description: string;
+}[] = [
+  {
+    title: "Infaq Masjid",
+    href: "/keuangan/infaq-masjid",
+    description: "Informasti terkait keuangan infaq masjid Zaid bin Tsabit.",
+  },
+  {
+    title: "Infaq Anak Yatim",
+    href: "/keuangan/infaq-anak-yatim",
+    description:
+      "Informasi terkait keuangan infaq anak yatim Masjid Zaid bin Tsabit.",
+  },
+  {
+    title: "Infaq Ramadhan",
+    href: "/keuangan/infaq-ramadhan",
+    description:
+      "Informasi terkait keuangan infaq ramadhan Masjid Zaid bin Tsabit.",
+  },
+];
+
 const profilComponents: { title: string; href: string; description: string }[] =
   [
     {
@@ -91,6 +115,36 @@ export function NavMenu() {
               ))}
             </ul>
           </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="bg-transparent hover:bg-transparent">
+            Keuangan
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] p-4 md:w-[500px] md:grid-cols-2">
+              {keuanganComponents.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem className="hover:bg-transparent">
+          <Link href="/tahsin" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "bg-transparent hover:bg-transparent"
+              )}
+            >
+              Tahsin
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="hover:bg-transparent">
           <Link href="/post/pengumuman" legacyBehavior passHref>
