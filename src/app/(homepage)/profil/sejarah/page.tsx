@@ -1,5 +1,11 @@
+import { Metadata } from "next";
 import { MaxWidthWrapper } from "@/components/max-width-wrapper";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Sejarah",
+  description: "Sejarah Masjid Zaid bin Tsabit",
+};
 
 export default function SejarahPage() {
   return (

@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { MaxWidthWrapper } from "@/components/max-width-wrapper";
 import { Suspense } from "react";
 import { PengurusCards } from "./_components/pengurus-cards";
+
+export const metadata: Metadata = {
+  title: "Imam dan Muadzin",
+  description: "Imam dan Muadzin",
+};
 
 export default async function Page() {
   return (
