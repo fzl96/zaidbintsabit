@@ -46,6 +46,10 @@ export default {
         session.user;
       }
 
+      if (token.id && session.user) {
+        session.user.id = token.id as string;
+      }
+
       if (token.role && session.user) {
         session.user.role = token.role as "ADMIN" | "PENGURUS" | "USER";
       }

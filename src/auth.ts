@@ -7,6 +7,7 @@ import { db } from "@/server/db";
 declare module "next-auth" {
   interface Session {
     user: {
+      id: string;
       role: "ADMIN" | "PENGURUS" | "USER";
       username: string;
     } & DefaultSession["user"];
