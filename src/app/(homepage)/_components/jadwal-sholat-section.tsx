@@ -28,6 +28,8 @@ export async function JadwalSholatSection() {
                 const jadwal = jadwalSholat.find((j) => j.id === item.id);
                 const active =
                   jadwal && hour >= jadwal.jamMulai && hour < jadwal.jamSelesai;
+                const tanggal = new Date(item.tanggal);
+                tanggal.setHours(tanggal.getHours() + 7);
 
                 return (
                   <div
@@ -38,7 +40,7 @@ export async function JadwalSholatSection() {
                     )}
                   >
                     <div className="font-medium">{item.nama}</div>
-                    <div>{format(new Date(item.tanggal), "HH:mm")}</div>
+                    <div>{format(tanggal, "HH:mm")}</div>
                   </div>
                 );
               })}
