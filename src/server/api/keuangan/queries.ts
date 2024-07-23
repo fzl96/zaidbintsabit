@@ -1,7 +1,8 @@
 import { db } from "@/server/db";
 import { currentUser } from "@/lib/auth";
-import { sql, and, eq } from "drizzle-orm";
+import { sql, and, eq, gte, lte } from "drizzle-orm";
 import { keuangan } from "@/server/db/schema";
+import { months } from "@/config/dashboard";
 
 const LIMIT = 6;
 
@@ -109,4 +110,83 @@ export async function getExportKeuanganData({
   });
 
   return data;
+}
+
+export async function getSaldos() {
+  const data = await db.query.keuangan.findMany();
+
+  const res = data.reduce((acc, curr) => {
+    if (curr.tipe === "pemasukan") {
+      acc[curr.kategori] = acc[curr.kategori]
+        ? acc[curr.kategori] + curr.jumlah
+        : curr.jumlah;
+    } else if (curr.tipe === "pengeluaran") {
+      acc[curr.kategori] = acc[curr.kategori]
+        ? acc[curr.kategori] - curr.jumlah
+        : curr.jumlah;
+    }
+    return acc;
+  }, {} as Record<string, number>);
+
+  const saldos = {
+    masjid: res.infaq ?? 0,
+    ramadhan: res.ramadhan ?? 0,
+    yatim: res.yatim ?? 0,
+    jumat: res.jumat ?? 0,
+  };
+
+  return saldos;
+}
+
+export async function getYearlyIncomeReport({ year }: { year: number }) {
+  const user = await currentUser();
+
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
+    throw new Error("Unauthorized");
+  }
+
+  const data = await db
+    .select({
+      month: sql`extract(month from ${keuangan.createdAt})`
+        .mapWith(Number)
+        .as("month"),
+      masjid:
+        sql`sum(case when ${keuangan.kategori} = 'infaq' and ${keuangan.tipe} = 'pemasukan' then ${keuangan.jumlah} else 0 end)`.as(
+          "masjid"
+        ),
+      ramadhan:
+        sql`sum(case when ${keuangan.kategori} = 'ramadhan' and ${keuangan.tipe} = 'pemasukan' then ${keuangan.jumlah} else 0 end)`.as(
+          "ramadhan"
+        ),
+      yatim:
+        sql`sum(case when ${keuangan.kategori} = 'yatim' and ${keuangan.tipe} = 'pemasukan' then ${keuangan.jumlah} else 0 end)`.as(
+          "yatim"
+        ),
+      jumat:
+        sql`sum(case when ${keuangan.kategori} = 'jumat' and ${keuangan.tipe} = 'pemasukan' then ${keuangan.jumlah} else 0 end)`.as(
+          "jumat"
+        ),
+    })
+    .from(keuangan)
+    .where(
+      and(
+        gte(keuangan.createdAt, new Date(year, 0, 1)),
+        lte(keuangan.createdAt, new Date(year, 11, 31))
+      )
+    )
+    .groupBy(sql`extract(month from ${keuangan.createdAt})`);
+
+  const formattedData = Array.from({ length: 12 }, (_, i) => {
+    const month = i + 1;
+    const monthData = data.find((d) => d.month === month);
+    return {
+      month: months.find((m) => m.value === month)?.short,
+      masjid: monthData?.masjid ?? 0,
+      ramadhan: monthData?.ramadhan ?? 0,
+      yatim: monthData?.yatim ?? 0,
+      jumat: monthData?.jumat ?? 0,
+    };
+  });
+
+  return formattedData;
 }
