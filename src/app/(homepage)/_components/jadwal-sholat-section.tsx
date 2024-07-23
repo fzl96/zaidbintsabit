@@ -38,7 +38,7 @@ export async function JadwalSholatSection() {
                     )}
                   >
                     <div className="font-medium">{item.nama}</div>
-                    <div>{format(item.tanggal, "HH:mm")}</div>
+                    <div>{format(new Date(item.tanggal), "HH:mm")}</div>
                   </div>
                 );
               })}
