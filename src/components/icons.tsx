@@ -39,9 +39,11 @@ import {
   Youtube,
   UserCheck,
   Folders,
+  Calendar,
 } from "lucide-react";
 
 export const Icons = {
+  calendar: Calendar,
   folders: Folders,
   userCheck: UserCheck,
   instagram: Instagram,

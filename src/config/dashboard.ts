@@ -2,37 +2,6 @@
 
 import { SidebarNavItem } from "@/lib/definitions";
 
-// export const mainNavItems: MainNavItem[] = [
-//   {
-//     title: "Visi dan Misi",
-//     href: "/profil/visi-misi",
-//   },
-//   {
-//     title: "Sejarah",
-//     href: "/profil/sejarah",
-//   },
-//   {
-//     title: "Pimpinan",
-//     href: "/profil/pimpinan",
-//   },
-//   {
-//     title: "Imam dan Muadzin",
-//     href: "/profil/imam-muadzin",
-//   },
-//   {
-//     title: "aktivitas",
-//     href: "/post/kegiatan",
-//   },
-//   {
-//     title: "Pengumuman",
-//     href: "/post/pengumuman",
-//   },
-//   {
-//     title: "Artikel",
-//     href: "/post/artikel",
-//   },
-// ];
-
 export const sidebarNavItems: SidebarNavItem[] = [
   {
     title: "Beranda",
@@ -101,10 +70,12 @@ export const sidebarNavItems: SidebarNavItem[] = [
       {
         title: "Jadwal Tahsin",
         href: "/dashboard/jadwal-tahsin",
+        icon: "calendar",
       },
       {
         title: "Anggota Tahsin",
         href: "/dashboard/anggota-tahsin",
+        icon: "users",
       },
     ],
   },
