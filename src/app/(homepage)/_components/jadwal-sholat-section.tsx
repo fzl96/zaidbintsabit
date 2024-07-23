@@ -10,6 +10,8 @@ export async function JadwalSholatSection() {
   const date = new Date();
 
   const jumat = data.find((item) => item.jenisJadwalSholat === "jumat");
+  const tanggalJumat = new Date(jumat?.tanggal ?? new Date());
+  tanggalJumat.setHours(tanggalJumat.getHours() + 7);
   const ied = data.filter((item) => item.jenisJadwalSholat === "ied");
 
   return (
@@ -55,7 +57,7 @@ export async function JadwalSholatSection() {
             <div className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10">
               <div className="font-medium">{jumat.nama}</div>
               <div className="text-lg font-medium">
-                {format(jumat.tanggal, "HH:mm")}
+                {format(tanggalJumat, "HH:mm")}
               </div>
               <div>{jumat.imam}</div>
               <div>{jumat.judul}</div>
@@ -70,20 +72,25 @@ export async function JadwalSholatSection() {
               Jadwal Sholat Ied
             </h2>
             <div className="flex md:flex-row flex-col gap-4 w-full">
-              {ied.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10 w-full"
-                >
-                  <div className="font-medium">{item.nama}</div>
-                  <div className="text-lg font-medium">
-                    {format(item.tanggal, "PPP HH:mm", { locale: id })}
+              {ied.map((item) => {
+                const tanggal = new Date(item.tanggal);
+                tanggal.setHours(tanggal.getHours() + 7);
+
+                return (
+                  <div
+                    key={item.id}
+                    className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10 w-full"
+                  >
+                    <div className="font-medium">{item.nama}</div>
+                    <div className="text-lg font-medium">
+                      {format(tanggal, "PPP HH:mm", { locale: id })}
+                    </div>
+                    <div>{item.imam}</div>
+                    <div>{item.judul}</div>
+                    <div>{item.khatib}</div>
                   </div>
-                  <div>{item.imam}</div>
-                  <div>{item.judul}</div>
-                  <div>{item.khatib}</div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
