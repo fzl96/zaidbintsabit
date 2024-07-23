@@ -22,6 +22,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 // import { logout, updateUser } from "@/lib/actions/user-setting-actions";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { updateUserAction } from "@/server/actions/user";
 import {
@@ -132,8 +133,8 @@ export function AkunForm({ user }: AkunFormProps) {
             <Button
               type="button"
               variant="destructive"
-              onClick={async () => {
-                // await logout();
+              onClick={() => {
+                signOut();
               }}
             >
               Keluar
