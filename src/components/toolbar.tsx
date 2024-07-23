@@ -1,7 +1,6 @@
 "use client";
 
 import type { Editor } from "@tiptap/react";
-import { useCallback } from "react";
 import {
   Bold,
   Strikethrough,
@@ -12,8 +11,6 @@ import {
   Heading1,
   Link,
 } from "lucide-react";
-import { buttonVariants } from "./ui/button";
-import { cn } from "@/lib/utils";
 import { Toggle } from "@/components/ui/toggle";
 
 type Props = {
@@ -24,26 +21,6 @@ export function Toolbar({ editor }: Props) {
   if (!editor) {
     return null;
   }
-
-  const setLink = useCallback(() => {
-    const previousUrl = editor.getAttributes("link").href;
-    const url = window.prompt("URL", previousUrl);
-
-    // cancelled
-    if (url === null) {
-      return;
-    }
-
-    // empty
-    if (url === "") {
-      editor.chain().focus().extendMarkRange("link").unsetLink().run();
-
-      return;
-    }
-
-    // update link
-    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
-  }, [editor]);
 
   return (
     <div className="border border-input bg-transparent rounded-md p-2 space-x-2 flex">

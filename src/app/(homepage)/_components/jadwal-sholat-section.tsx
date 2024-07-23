@@ -48,7 +48,7 @@ export async function JadwalSholatSection() {
         {jumat && (
           <div className="space-y-5">
             <h2 className="md:text-3xl text-lg text-center font-medium">
-              Jadwal Sholat Jum'at
+              Jadwal Sholat Jum&apos;at
             </h2>
             <div className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10">
               <div className="font-medium">{jumat.nama}</div>
@@ -69,7 +69,10 @@ export async function JadwalSholatSection() {
             </h2>
             <div className="flex md:flex-row flex-col gap-4 w-full">
               {ied.map((item) => (
-                <div className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10 w-full">
+                <div
+                  key={item.id}
+                  className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10 w-full"
+                >
                   <div className="font-medium">{item.nama}</div>
                   <div className="text-lg font-medium">
                     {format(item.tanggal, "PPP HH:mm", { locale: id })}
