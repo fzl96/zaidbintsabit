@@ -8,7 +8,7 @@ import { ExportButton } from "./export-button";
 interface ExportFinanceProps {
   month: number;
   year: number;
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
 }
 
 export async function ExportFinance({

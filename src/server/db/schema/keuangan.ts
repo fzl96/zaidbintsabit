@@ -15,6 +15,7 @@ export const categoryEnum = pgEnum("kategori_keuangan", [
   "infaq",
   "yatim",
   "ramadhan",
+  "jumat",
 ]);
 
 export const keuangan = pgTable("keuangan", {

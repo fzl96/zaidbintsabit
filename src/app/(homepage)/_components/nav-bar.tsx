@@ -21,7 +21,6 @@ export async function Navbar() {
               height={35}
               className="rounded-md"
             />
-            <span>Zaid bin Tsabit</span>
           </Link>
           <div className="md:hidden block">
             <MobileNavToggle loggedIn={!!user} />

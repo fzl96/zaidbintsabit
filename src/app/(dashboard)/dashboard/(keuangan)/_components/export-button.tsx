@@ -8,7 +8,7 @@ interface ExportButtonProps {
   data: Keuangan[];
   month: number;
   year: number;
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
 }
 
 export function ExportButton({
@@ -27,6 +27,8 @@ export function ExportButton({
     name = "infaq_anak_yatim";
   } else if (kategori === "ramadhan") {
     name = "infaq_ramadhan";
+  } else if (kategori === "jumat") {
+    name = "infaq_jumat";
   }
 
   const fileName = `Laporan_${name}_${monthName}-${year}`;

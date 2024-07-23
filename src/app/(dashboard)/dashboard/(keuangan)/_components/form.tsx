@@ -38,7 +38,7 @@ import {
 interface FinanceFormProps {
   keuangan?: Keuangan;
   keuanganId?: number;
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
   action: "create" | "update" | "delete";
   close?: () => void;
 }
@@ -107,6 +107,7 @@ export function FinanceForm({
           type="submit"
           variant={"destructive"}
           className="w-full"
+          disabled={isPending}
           onClick={() => {
             startTransition(async () => {
               const res = await deleteKeuanganAction(keuanganId);

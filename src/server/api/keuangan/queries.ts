@@ -11,7 +11,7 @@ export async function getKeuangan({
   tipe,
 }: // date,
 {
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
   page: number;
   tipe: "semua" | "pengeluaran" | "pemasukan";
   // date: string;
@@ -37,7 +37,7 @@ export async function getKeuangan({
 export async function getKeuanganSaldo({
   kategori,
 }: {
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
 }) {
   const data = await db.query.keuangan.findMany({
     where: (keuangan, { eq }) => eq(keuangan.kategori, kategori),
@@ -59,7 +59,7 @@ export async function getKeuanganTotalPages({
   kategori,
   tipe,
 }: {
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
   tipe: "semua" | "pengeluaran" | "pemasukan";
 }) {
   if (tipe === "semua") {
@@ -90,7 +90,7 @@ export async function getExportKeuanganData({
 }: {
   month: number;
   year: number;
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
 }) {
   const user = await currentUser();
 
