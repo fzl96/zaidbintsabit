@@ -3,7 +3,7 @@
  * These routes are accessible by everyone
  * @type {string[]}
  */
-export const publicRoutes = ["/"];
+export const publicRoutes = ["/", "/profil", "/keuangan", "/tahsin", "/post"];
 
 /**
  * List of admin and pengurus routes
