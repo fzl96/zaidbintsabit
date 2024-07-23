@@ -13,7 +13,7 @@ export async function KeuanganTable({
 }: {
   page: number;
   tipe: "semua" | "pemasukan" | "pengeluaran";
-  kategori: "infaq" | "yatim" | "ramadhan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
 }) {
   const data = await getKeuangan({ page, kategori, tipe });
   const totalPages = await getKeuanganTotalPages({ kategori, tipe });

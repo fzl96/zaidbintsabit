@@ -45,6 +45,11 @@ const keuanganComponents: {
     description: "Informasti terkait keuangan infaq masjid Zaid bin Tsabit.",
   },
   {
+    title: "Infaq Jum'at",
+    href: "/keuangan/infaq-jumat",
+    description: "Informasti terkait keuangan infaq jum'at Zaid bin Tsabit.",
+  },
+  {
     title: "Infaq Anak Yatim",
     href: "/keuangan/infaq-anak-yatim",
     description:
