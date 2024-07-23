@@ -23,6 +23,12 @@ export function NavItems({
             </div>
             <div className="space-y-2">
               {item.items.map((subItem) => {
+                if (
+                  subItem.href === "/dashboard/akun-pengurus" &&
+                  role !== "ADMIN"
+                ) {
+                  return null;
+                }
                 const Icon = Icons[subItem.icon || "arrowRight"];
                 const active =
                   (pathname.startsWith(subItem.href) &&

@@ -46,7 +46,7 @@ export async function createUser(data: AkunParams) {
 
 export async function updateUser(id: string, data: AkunParams) {
   const user = await currentUser();
-  if (!user || user.role !== "ADMIN") {
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
     throw new Error("Unauthorized");
   }
 
