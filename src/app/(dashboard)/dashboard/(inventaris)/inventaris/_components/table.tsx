@@ -71,10 +71,10 @@ export async function InventarisTable({
                 <TableRow className="border-none mb-4">
                   <TableHead className="text-gray-900">Nama</TableHead>
                   <TableHead className="text-gray-900">Jumlah</TableHead>
-                  <TableHead className="text-gray-900">Kondisi</TableHead>
+                  <TableHead className="text-gray-900">Baik</TableHead>
+                  <TableHead className="text-gray-900">Rusak</TableHead>
                   <TableHead className="text-gray-900">Kategori</TableHead>
                   <TableHead className="text-gray-900">Keterangan</TableHead>
-                  <TableHead className="text-right sr-only">Aksi</TableHead>
                   <TableHead className="text-right sr-only">Aksi</TableHead>
                 </TableRow>
               </TableHeader>
@@ -83,7 +83,10 @@ export async function InventarisTable({
                   <TableRow key={inventaris.id} className="py-4">
                     <TableCell className="">{inventaris.nama}</TableCell>
                     <TableCell className="">{inventaris.jumlah}</TableCell>
-                    <TableCell className="">{inventaris.kondisi}</TableCell>
+                    <TableCell className="">{inventaris.kondisiBaik}</TableCell>
+                    <TableCell className="">
+                      {inventaris.kondisiRusak}
+                    </TableCell>
                     <TableCell className="">
                       {inventaris.kategori.nama}
                     </TableCell>

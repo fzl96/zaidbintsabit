@@ -50,8 +50,8 @@ export const inventaris = pgTable("inventaris", {
   id: serial("id").notNull().primaryKey(),
   nama: varchar("nama", { length: 255 }).notNull(),
   jumlah: integer("jumlah").notNull(),
-  satuan: varchar("satuan", { length: 255 }),
-  kondisi: kondisiEnum("kondisi").notNull(),
+  kondisiBaik: integer("kondisi_baik").notNull(),
+  kondisiRusak: integer("kondisi_rusak").notNull(),
   keterangan: varchar("keterangan", { length: 255 }),
   kategoriId: integer("kategori_id").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -74,7 +74,8 @@ export const insertInventarisParams = insertInventarisSchema
     nama: z.string().min(1, { message: "Nama harus diisi" }),
     jumlah: z.coerce.number(),
     kategoriId: z.coerce.number(),
-    satuan: z.string().nullish(),
+    kondisiBaik: z.coerce.number(),
+    kondisiRusak: z.coerce.number(),
     keterangan: z.string().nullish(),
   })
   .omit({ id: true });
@@ -88,3 +89,4 @@ export type InventarisId = z.infer<typeof inventarisIdSchema>["id"];
 export type NewInventaris = z.infer<typeof insertInventarisSchema>;
 export type NewInventarisParams = z.infer<typeof insertInventarisParams>;
 export type UpdateInventarisParams = z.infer<typeof updateInventarisParams>;
+export type InventarisWithKategori = Inventaris & { kategori: string };

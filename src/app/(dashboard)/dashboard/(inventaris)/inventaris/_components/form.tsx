@@ -89,8 +89,8 @@ export function InventarisForm({
         kategoriId: Number(values.kategoriId),
         nama: values.nama,
         jumlah: Number(values.jumlah),
-        satuan: values.satuan,
-        kondisi: values.kondisi,
+        kondisiBaik: Number(values.kondisiBaik),
+        kondisiRusak: Number(values.kondisiRusak),
         keterangan: values.keterangan,
       });
       // @ts-ignore
@@ -209,13 +209,16 @@ export function InventarisForm({
           />
           <FormField
             control={form.control}
-            name="satuan"
+            name="kondisiBaik"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Satuan</FormLabel>
+                <FormLabel>Jumlah Kondisi Baik</FormLabel>
                 <FormControl>
-                  {/* @ts-ignore */}
-                  <Input {...field} type="text" placeholder="Masukkan satuan" />
+                  <Input
+                    {...field}
+                    type="number"
+                    placeholder="Masukkan jumlah kondisi baik"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -223,24 +226,17 @@ export function InventarisForm({
           />
           <FormField
             control={form.control}
-            name="kondisi"
+            name="kondisiRusak"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Kondisi</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Pilih kondisi" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="baik">Baik</SelectItem>
-                    <SelectItem value="rusak">Rusak</SelectItem>
-                  </SelectContent>
-                </Select>
+                <FormLabel>Jumlah Kondisi Rusak</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="number"
+                    placeholder="Masukkan jumlah kondisi rusak"
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}

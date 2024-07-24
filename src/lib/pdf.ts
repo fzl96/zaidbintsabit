@@ -5,7 +5,10 @@ import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import { type Keuangan } from "@/server/db/schema/keuangan";
 import { type Zakat } from "@/server/db/schema/zakat";
-import { type Inventaris } from "@/server/db/schema/inventaris";
+import {
+  type Inventaris,
+  type InventarisWithKategori,
+} from "@/server/db/schema/inventaris";
 
 export function createFinancePdf(
   data: Keuangan[],
@@ -142,7 +145,7 @@ export function createZakatPdf(data: Zakat[], fileName: string) {
 }
 
 export async function createInventarisPdf(
-  data: Inventaris[],
+  data: InventarisWithKategori[],
   fileName: string
 ) {
   const doc = new jsPDF();
@@ -150,13 +153,17 @@ export async function createInventarisPdf(
   doc.addImage("/masjid/kop.png", "PNG", 0, 5, 210, 30);
   autoTable(doc, {
     startY: 60,
-    head: [["No", "Barang", "Jumlah", "Kondisi", "Keterangan"]],
+    head: [
+      ["No", "Barang", "Jumlah", "Baik", "Rusak", "Kategori", "Keterangan"],
+    ],
     body: data.map((item, index) => {
       return [
         index + 1,
         item.nama,
         item.jumlah,
-        capitalize(item.kondisi),
+        item.kondisiBaik,
+        item.kondisiRusak,
+        item.kategori,
         item.keterangan || "-",
       ];
     }),

@@ -110,8 +110,18 @@ export async function getExportInventarisData() {
   }
 
   const data = await db.query.inventaris.findMany({
+    with: {
+      kategori: true,
+    },
     orderBy: (inventaris, { desc }) => desc(inventaris.createdAt),
   });
 
-  return data;
+  const dataMapped = data.map((item) => {
+    return {
+      ...item,
+      kategori: item.kategori.nama,
+    };
+  });
+
+  return dataMapped;
 }

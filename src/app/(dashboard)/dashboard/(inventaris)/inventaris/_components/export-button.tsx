@@ -1,13 +1,13 @@
 "use client";
 
-import { type Inventaris } from "@/server/db/schema/inventaris";
+import { InventarisWithKategori } from "@/server/db/schema/inventaris";
 import { Button } from "@/components/ui/button";
 import { createInventarisPdf } from "@/lib/pdf";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface ExportButtonProps {
-  data: Inventaris[];
+  data: InventarisWithKategori[];
 }
 
 export function ExportButton({ data }: ExportButtonProps) {
