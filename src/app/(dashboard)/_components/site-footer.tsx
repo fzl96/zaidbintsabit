@@ -17,7 +17,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             <p className="flex items-center gap-1">
               Copyrights
               <Icons.copyright className="w-4 h-5" />
-              2023.
+              {new Date().getFullYear()}.
             </p>
             <p>All Rights Reserved by Zaid Bin Tsabit</p>
           </div>

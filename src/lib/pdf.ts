@@ -7,7 +7,11 @@ import { type Keuangan } from "@/server/db/schema/keuangan";
 import { type Zakat } from "@/server/db/schema/zakat";
 import { type Inventaris } from "@/server/db/schema/inventaris";
 
-export function createFinancePdf(data: Keuangan[], fileName: string) {
+export function createFinancePdf(
+  data: Keuangan[],
+  fileName: string,
+  kategori: string
+) {
   const doc = new jsPDF();
   const saldo = data.reduce((acc, curr) => {
     if (curr.tipe === "pemasukan") {
@@ -31,13 +35,9 @@ export function createFinancePdf(data: Keuangan[], fileName: string) {
   }, 0);
 
   doc.addImage("/masjid/kop.png", "PNG", 0, 5, 210, 30);
-  doc.setFontSize(10);
-  doc.text(`Pengeluaran: ${formatCurrency(pengeluaran)}`, 13, 45);
-  doc.text(`Pemasukan: ${formatCurrency(pemasukan)}`, 13, 50);
-  doc.setFontSize(14);
-  doc.text(`Saldo: ${formatCurrency(saldo)}`, 13, 58);
+  doc.text(`INFAQ ${kategori}`, 83, 50);
   autoTable(doc, {
-    startY: 65,
+    startY: 60,
     head: [["No", "Tanggal", "Jumlah", "Jenis", "Keterangan"]],
     body: data.map((item, index) => {
       return [
@@ -53,6 +53,11 @@ export function createFinancePdf(data: Keuangan[], fileName: string) {
   const hasSpace = 297 - finalY > 60;
   if (!hasSpace) doc.addPage();
   const startY = hasSpace ? finalY + 20 : 20;
+  doc.setFontSize(11);
+  doc.text(`Pengeluaran: ${formatCurrency(pengeluaran)}`, 13, startY);
+  doc.text(`Pemasukan: ${formatCurrency(pemasukan)}`, 13, startY + 5);
+  doc.setFontSize(14);
+  doc.text(`Saldo: ${formatCurrency(saldo)}`, 13, startY + 13);
 
   doc.setFontSize(10);
   doc.text("PENGURUS MASJID ZAID BIN TSABIT", 130, startY);

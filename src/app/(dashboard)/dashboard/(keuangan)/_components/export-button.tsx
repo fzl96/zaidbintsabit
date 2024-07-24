@@ -30,10 +30,23 @@ export function ExportButton({
   } else if (kategori === "jumat") {
     name = "infaq_jumat";
   }
+  let kat: string;
+  if (kategori === "infaq") {
+    kat = "masjid";
+  } else if (kategori === "yatim") {
+    kat = "anak yatim";
+  } else if (kategori === "ramadhan") {
+    kat = "ramadhan";
+  } else if (kategori === "jumat") {
+    kat = "jum'at";
+  }
 
   const fileName = `Laporan_${name}_${monthName}-${year}`;
   return (
-    <Button className="w-full" onClick={() => createFinancePdf(data, fileName)}>
+    <Button
+      className="w-full"
+      onClick={() => createFinancePdf(data, fileName, kat.toUpperCase())}
+    >
       Export
     </Button>
   );
