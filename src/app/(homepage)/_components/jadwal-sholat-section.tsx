@@ -26,7 +26,7 @@ export async function JadwalSholatSection() {
   tanggalTarawih.setHours(tanggalTarawih.getHours() + 7);
 
   return (
-    <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-40">
+    <div id="jadwal-sholat" className="mx-auto max-w-6xl px-6 lg:px-8 mt-40">
       <div className="rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-8 space-y-10">
         <div className="space-y-5">
           <h2 className="md:text-3xl text-lg text-center flex md:flex-row flex-col items-center font-medium justify-center">

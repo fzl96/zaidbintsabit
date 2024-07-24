@@ -26,7 +26,7 @@ export function MobileNavToggle({ loggedIn }: { loggedIn?: boolean }) {
       <DropdownMenuTrigger>
         <Menu className="w-6 h-6" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mr-5 w-[200px]">
+      <DropdownMenuContent className="mr-5 w-[400px]">
         <Link href="/profil/sejarah">
           <DropdownMenuItem>Sejarah</DropdownMenuItem>
         </Link>
@@ -39,8 +39,20 @@ export function MobileNavToggle({ loggedIn }: { loggedIn?: boolean }) {
         <Link href="/profil/imam-muadzin">
           <DropdownMenuItem>Imam dan Muadzin</DropdownMenuItem>
         </Link>
-        <Link href="/#jadwal-sholat">
-          <DropdownMenuItem>Jadwal Sholat</DropdownMenuItem>
+        <Link href="/keuangan/infaq-masjid">
+          <DropdownMenuItem>Infaq Masjid</DropdownMenuItem>
+        </Link>
+        <Link href="/keuangan/infaq-jumat">
+          <DropdownMenuItem>Infaq Jum&apos;at</DropdownMenuItem>
+        </Link>
+        <Link href="/keuangan/infaq-ramadhan">
+          <DropdownMenuItem>Infaq Ramadhan</DropdownMenuItem>
+        </Link>
+        <Link href="/keuangan/infaq-masjid">
+          <DropdownMenuItem>Infaq Anak Yatim</DropdownMenuItem>
+        </Link>
+        <Link href="/jadwal-tahsin">
+          <DropdownMenuItem>Jadwal Tahsin</DropdownMenuItem>
         </Link>
         <Link href="/post/aktivitas">
           <DropdownMenuItem>Aktivitas</DropdownMenuItem>
