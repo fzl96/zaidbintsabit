@@ -5,6 +5,14 @@ import { id } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { jadwalSholat } from "@/config/jadwal-sholat";
 
+export const nameSholat: string[] = [
+  "subuh",
+  "dzuhur",
+  "ashar",
+  "maghrib",
+  "isya",
+];
+
 export async function JadwalSholatSection() {
   const data = await getJadwalSholat();
   const date = new Date();
@@ -13,6 +21,9 @@ export async function JadwalSholatSection() {
   const tanggalJumat = new Date(jumat?.tanggal ?? new Date());
   tanggalJumat.setHours(tanggalJumat.getHours() + 7);
   const ied = data.filter((item) => item.jenisJadwalSholat === "ied");
+  const tarawih = data.find((item) => item.jenisJadwalSholat === "tarawih");
+  const tanggalTarawih = new Date(tarawih?.tanggal ?? new Date());
+  tanggalTarawih.setHours(tanggalTarawih.getHours() + 7);
 
   return (
     <div className="mx-auto max-w-6xl px-6 lg:px-8 mt-40">
@@ -43,6 +54,9 @@ export async function JadwalSholatSection() {
                   >
                     <div className="font-medium">{item.nama}</div>
                     <div>{format(tanggal, "HH:mm")}</div>
+                    <div className="text-center">
+                      Imam: {item.imam?.toUpperCase()}
+                    </div>
                   </div>
                 );
               })}
@@ -59,9 +73,24 @@ export async function JadwalSholatSection() {
               <div className="text-lg font-medium">
                 {format(tanggalJumat, "HH:mm")}
               </div>
-              <div>{jumat.imam}</div>
-              <div>{jumat.judul}</div>
-              <div>{jumat.khatib}</div>
+              <div>Imam: {jumat.imam?.toUpperCase()}</div>
+              <div>Khatib: {jumat.khatib}</div>
+              <div>Judul Khutbah: {jumat.judul}</div>
+            </div>
+          </div>
+        )}
+
+        {tarawih && (
+          <div className="space-y-5">
+            <h2 className="md:text-3xl text-lg text-center font-medium">
+              Jadwal Sholat tarawih
+            </h2>
+            <div className="flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10">
+              <div className="font-medium">{tarawih.nama}</div>
+              <div className="text-lg font-medium">
+                {format(tanggalTarawih, "HH:mm")}
+              </div>
+              <div>Imam: {tarawih.imam?.toUpperCase()}</div>
             </div>
           </div>
         )}
@@ -85,9 +114,9 @@ export async function JadwalSholatSection() {
                     <div className="text-lg font-medium">
                       {format(tanggal, "PPP HH:mm", { locale: id })}
                     </div>
-                    <div>{item.imam}</div>
-                    <div>{item.judul}</div>
-                    <div>{item.khatib}</div>
+                    <div>Imam: {item.imam?.toUpperCase()}</div>
+                    <div>Khatib: {item.khatib}</div>
+                    <div>Judul Khutbah: {item.judul}</div>
                   </div>
                 );
               })}
