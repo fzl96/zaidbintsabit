@@ -34,3 +34,7 @@ export function capitalize(str: string) {
 export function removeHtmlTags(string: string) {
   return string.replace(/(<([^>]+)>)/gi, "");
 }
+
+export function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

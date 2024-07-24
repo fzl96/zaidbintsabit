@@ -42,6 +42,7 @@
     "drizzle-zod": "^0.5.1",
     "embla-carousel-autoplay": "^8.1.7",
     "embla-carousel-react": "^8.1.7",
+    "html-react-parser": "^5.1.12",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "lucide-react": "^0.408.0",

@@ -57,3 +57,9 @@ export async function getPostsTotalPages({
 
   return countRes?.count ? Math.ceil(countRes.count / LIMIT) : 1;
 }
+
+export async function getPostBySlug(slug: string) {
+  return await db.query.posts.findFirst({
+    where: (posts, { eq }) => eq(posts.slug, slug),
+  });
+}
