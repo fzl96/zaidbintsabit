@@ -9,6 +9,7 @@ import { AktivitasSection } from "./_components/aktivitas-section";
 import { PengumumanSection } from "./_components/pengumuman-section";
 import { ArtikelSection } from "./_components/artikel-section";
 import { SaldoSection } from "./_components/saldo-section";
+import { KajianSection } from "./_components/kajian-section";
 
 export default function Home() {
   return (
@@ -245,7 +246,9 @@ export default function Home() {
             />
           </div>
 
-          <Suspense fallback={<div>Loading...</div>}></Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <KajianSection />
+          </Suspense>
         </div>
       </div>
     </>
