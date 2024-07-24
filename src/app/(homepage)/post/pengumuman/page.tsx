@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { PostCards } from "../_components/post-cards";
 import { PostPagination } from "../_components/post-pagination";
 import { PostCardsSkeleton } from "../_components/pos-cards-skeleton";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default function PengumumanPage({
   searchParams,
@@ -14,6 +15,7 @@ export default function PengumumanPage({
     query?: string;
   };
 }) {
+  noStore();
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const query = searchParams.query ?? "";
 

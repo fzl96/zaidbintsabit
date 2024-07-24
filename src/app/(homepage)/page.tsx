@@ -10,8 +10,10 @@ import { PengumumanSection } from "./_components/pengumuman-section";
 import { ArtikelSection } from "./_components/artikel-section";
 import { SaldoSection } from "./_components/saldo-section";
 import { KajianSection } from "./_components/kajian-section";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default function Home() {
+  noStore();
   return (
     <>
       <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">

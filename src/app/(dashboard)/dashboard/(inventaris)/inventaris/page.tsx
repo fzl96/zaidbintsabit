@@ -8,6 +8,7 @@ import { InventarisTable } from "./_components/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CreateInventarisButton } from "./_components/create-button";
 import { ExportInventaris } from "./_components/export";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Inventaris",
@@ -21,6 +22,7 @@ export default function InventarisPage({
     query?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const query = searchParams.query ?? "";
 

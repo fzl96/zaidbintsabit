@@ -7,6 +7,7 @@ import { TableLoader } from "@/components/table-loader";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { PostTable } from "./_components/table";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Post",
@@ -20,6 +21,7 @@ export default function JadwalTahsinPage({
     query?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const query = searchParams.query ?? "";
 

@@ -8,6 +8,7 @@ import { TableLoader } from "@/components/table-loader";
 import { InfaqMasjidTable } from "./_components/infaq-masjid-table";
 import { ExportFinance } from "../_components/export";
 import { Skeleton } from "@/components/ui/skeleton";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Infaq Ramdhan",
@@ -23,6 +24,7 @@ export default function InfaqRamadhanPage({
     tipe?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const date = new Date();
   const tipe = searchParams.tipe ?? "semua";

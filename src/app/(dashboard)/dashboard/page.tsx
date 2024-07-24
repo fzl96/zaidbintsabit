@@ -5,6 +5,7 @@ import { DashboardCards } from "./_components/dashboard-cards";
 import { CardsSkeleton } from "./_components/dashboard-cards-skeleton";
 import { DashboardChart } from "./_components/dashboard-chart";
 import { Skeleton } from "@/components/ui/skeleton";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function Dashboard({
   searchParams,
@@ -13,6 +14,7 @@ export default async function Dashboard({
     year?: string;
   };
 }) {
+  noStore();
   const year = searchParams.year
     ? parseInt(searchParams.year)
     : new Date().getFullYear();

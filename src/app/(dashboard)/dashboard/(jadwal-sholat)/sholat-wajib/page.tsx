@@ -5,6 +5,7 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { Suspense } from "react";
 import { TableLoader } from "@/components/table-loader";
 import { SholatWajibTable } from "./_components/table";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function JadwalSholatWajibPage() {
+  noStore();
   return (
     <Wrapper>
       <BreadcrumbComponent

@@ -6,6 +6,7 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { TableLoader } from "@/components/table-loader";
 import { CreateJadwalTahsin } from "./_components/actions";
 import { JadwalTahsinTable } from "./_components/table";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Jadwal Tahsin",
@@ -18,6 +19,7 @@ export default function JadwalTahsinPage({
     page?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
 
   return (

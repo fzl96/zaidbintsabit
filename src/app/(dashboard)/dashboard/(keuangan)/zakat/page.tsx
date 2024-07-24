@@ -9,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { ZakatTable } from "./_components/table";
 import { ExportZakat } from "./_components/export";
 import { Skeleton } from "@/components/ui/skeleton";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Zakat",
@@ -24,6 +25,7 @@ export default function ZakatPage({
     year?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const query = searchParams.query ?? "";
   const date = new Date();

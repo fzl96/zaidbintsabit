@@ -8,6 +8,7 @@ import { TableLoader } from "@/components/table-loader";
 import { JumatTable } from "./_components/table-jumat";
 import { ExportFinance } from "../_components/export";
 import { Skeleton } from "@/components/ui/skeleton";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Infaq Jum'at",
@@ -23,6 +24,7 @@ export default function InfaqJumatPage({
     tipe?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const date = new Date();
   const tipe = searchParams.tipe ?? "semua";

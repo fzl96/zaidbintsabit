@@ -8,6 +8,7 @@ import { CreateAnggotaTahsin } from "./_components/actions";
 import { AnggotaTahsinTable } from "./_components/table";
 import { ExportAnggotaTahsin } from "./_components/export";
 import { Skeleton } from "@/components/ui/skeleton";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Anggota Tahsin",
@@ -21,6 +22,7 @@ export default function JadwalTahsinPage({
     query?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const query = searchParams.query ?? "";
 

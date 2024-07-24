@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { MaxWidthWrapper } from "@/components/max-width-wrapper";
 import { Suspense } from "react";
 import { PengurusCards } from "./_components/pengurus-cards";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Imam dan Muadzin",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+  noStore();
   return (
     <MaxWidthWrapper className="mb-12 md:mt-20 mt-10 flex flex-col w-full items-center min-h-screen">
       <div className="flex flex-col gap-5">

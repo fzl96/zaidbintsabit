@@ -7,6 +7,7 @@ import { TableLoader } from "@/components/table-loader";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { PenguruTable } from "./_components/table";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Pengurus Masjid",
@@ -20,6 +21,7 @@ export default function PengurusPage({
     query?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const query = searchParams.query ?? "";
 

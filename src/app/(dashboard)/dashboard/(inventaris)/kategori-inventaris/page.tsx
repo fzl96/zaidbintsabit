@@ -6,6 +6,7 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { TableLoader } from "@/components/table-loader";
 import { KategoriInventarisTable } from "./_components/table";
 import { CreateKategoriInventaris } from "./_components/actions";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Kategori Inventaris",
@@ -19,6 +20,7 @@ export default function KategoriInventarisPage({
     query?: string;
   };
 }) {
+  noStore();
   const currentPage = Number(searchParams?.page ?? 1);
   const query = searchParams.query ?? "";
 
