@@ -43,3 +43,15 @@ export async function getAnggotaTahsinTotalPages({ query }: { query: string }) {
 
   return countRes?.count ? Math.ceil(countRes.count / LIMIT) : 1;
 }
+
+export async function getExportAnggotaTahsin() {
+  const user = await currentUser();
+
+  if (!user || !["ADMIN", "PENGURUS"].includes(user.role)) {
+    throw new Error("Unauthorized");
+  }
+
+  return await db.query.anggotaTahsin.findMany({
+    orderBy: (anggotaTahsin, { desc }) => desc(anggotaTahsin.createdAt),
+  });
+}

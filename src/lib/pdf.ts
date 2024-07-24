@@ -9,6 +9,7 @@ import {
   type Inventaris,
   type InventarisWithKategori,
 } from "@/server/db/schema/inventaris";
+import { AnggotaTahsin } from "@/server/db/schema/tahsin";
 
 export function createFinancePdf(
   data: Keuangan[],
@@ -149,8 +150,8 @@ export async function createInventarisPdf(
   fileName: string
 ) {
   const doc = new jsPDF();
-  doc.text(`INVENTARIS MAJID`, 78, 50);
   doc.addImage("/masjid/kop.png", "PNG", 0, 5, 210, 30);
+  doc.text(`INVENTARIS MAJID`, 78, 50);
   autoTable(doc, {
     startY: 60,
     head: [
@@ -180,4 +181,29 @@ export async function createInventarisPdf(
   doc.setFontSize(11);
   doc.text("Yana Patriana", 130, startY + 30);
   doc.save(`${fileName}.pdf`);
+}
+
+export async function createAnggotaTahsinPdf(data: AnggotaTahsin[]) {
+  const doc = new jsPDF();
+  doc.text(`ANGGOTA TAHSIN`, 80, 50);
+  doc.addImage("/masjid/kop.png", "PNG", 0, 5, 210, 30);
+  autoTable(doc, {
+    startY: 60,
+    head: [["No", "Nama Anggota", "Alamat", "No. WhatsApp"]],
+    body: data.map((item, index) => {
+      return [index + 1, item.nama, item.alamat, item.noHp];
+    }),
+  });
+
+  let finalY = (doc as any).lastAutoTable.finalY;
+  const hasSpace = 297 - finalY > 60;
+  if (!hasSpace) doc.addPage();
+  const startY = hasSpace ? finalY + 20 : 20;
+
+  doc.setFontSize(10);
+  doc.text("PENGURUS MASJID ZAID BIN TSABIT", 130, startY);
+  doc.text("KETUA", 130, startY + 5);
+  doc.setFontSize(11);
+  doc.text("Yana Patriana", 130, startY + 30);
+  doc.save(`Anggota_Tahsin.pdf`);
 }

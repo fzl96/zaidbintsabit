@@ -6,8 +6,8 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { TableLoader } from "@/components/table-loader";
 import { CreateAnggotaTahsin } from "./_components/actions";
 import { AnggotaTahsinTable } from "./_components/table";
-// import { CreateJadwalTahsin } from "./_components/actions";
-// import { JadwalTahsinTable } from "./_components/table";
+import { ExportAnggotaTahsin } from "./_components/export";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Anggota Tahsin",
@@ -34,7 +34,12 @@ export default function JadwalTahsinPage({
       />
       <div className="space-y-8">
         <PageTitle title="Anggota Tahsin">
-          <CreateAnggotaTahsin />
+          <div className="flex items-center gap-2 md:flex-row flex-col">
+            <Suspense fallback={<Skeleton className="h-10 w-20" />}>
+              <ExportAnggotaTahsin />
+            </Suspense>
+            <CreateAnggotaTahsin />
+          </div>
         </PageTitle>
 
         <Suspense fallback={<TableLoader />}>
