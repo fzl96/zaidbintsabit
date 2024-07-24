@@ -3,12 +3,14 @@ import { cn, removeHtmlTags } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { type Post } from "@/server/db/schema/post";
+import parse from "html-react-parser";
 
 interface PostCardProps extends React.HTMLAttributes<HTMLDivElement> {
   post: Post;
 }
 
 export function PostCard({ post, className }: PostCardProps) {
+  console.log(post);
   return (
     <div
       className={cn(
@@ -31,11 +33,17 @@ export function PostCard({ post, className }: PostCardProps) {
             <h2 className="text-lg font-semibold leading-6 hover:underline">
               {post.judul}
             </h2>
-            <p className="mt-2 text-zinc-700 hover:underline">
-              {post.konten.length > 100
-                ? removeHtmlTags(post.konten.slice(0, 100)) + "..."
-                : removeHtmlTags(post.konten)}
-            </p>
+
+            {post.kategori === "kajian" && (
+              <p className="mt-2 text-zinc-700 hover:underline">Facebook</p>
+            )}
+            {post.kategori !== "kajian" && (
+              <p className="mt-2 text-zinc-700 hover:underline">
+                {post.konten.length > 100
+                  ? removeHtmlTags(post.konten.slice(0, 100)) + "..."
+                  : removeHtmlTags(post.konten)}
+              </p>
+            )}
           </Link>
         </div>
       </div>
