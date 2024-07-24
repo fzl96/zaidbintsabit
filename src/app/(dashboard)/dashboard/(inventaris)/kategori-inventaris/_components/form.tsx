@@ -91,7 +91,7 @@ export function KategoriInventarisForm({
   if (action === "delete" && kategoriInventarisId) {
     return (
       <form
-        className="space-y-2"
+        className="space-y-2 px-4"
         action={async () =>
           await deleteKategoriInventarisAction(kategoriInventarisId)
         }
@@ -116,14 +116,6 @@ export function KategoriInventarisForm({
         >
           {isPending && <Icons.spinner className="animate-spin h-4 w-4 mr-2" />}
           Hapus
-        </Button>
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full"
-          onClick={close}
-        >
-          Batal
         </Button>
       </form>
     );

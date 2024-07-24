@@ -28,13 +28,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 import { Icons } from "@/components/icons";
-import { Label } from "@/components/ui/label";
-import { SingleImageDropzone } from "@/components/single-image-dropzone";
-import { useEdgeStore } from "@/lib/edgestore";
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -90,7 +85,7 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
   if (action === "delete" && zakatId) {
     return (
       <form
-        className="space-y-2"
+        className="space-y-2 px-4"
         action={async () => await deleteZakatAction(zakatId)}
       >
         <Button
@@ -112,14 +107,6 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
           {isPending && <Icons.spinner className="animate-spin h-4 w-4 mr-2" />}
           Hapus
         </Button>
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full"
-          onClick={close}
-        >
-          Batal
-        </Button>
       </form>
     );
   }
@@ -134,12 +121,14 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="required-field">Nama</FormLabel>
-                <Input
-                  id="nama"
-                  placeholder="Masukkan nama"
-                  {...field}
-                  autoFocus
-                />
+                <FormControl>
+                  <Input
+                    id="nama"
+                    placeholder="Masukkan nama"
+                    {...field}
+                    autoFocus
+                  />
+                </FormControl>
                 <FormMessage {...field} />
               </FormItem>
             )}
@@ -152,13 +141,15 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
                 <FormLabel className="required-field">
                   Jumlah Keluarga
                 </FormLabel>
-                <Input
-                  id="jumlahKeluarga"
-                  placeholder="Masukkan Jumlah Keluarga"
-                  {...field}
-                  autoFocus
-                  required
-                />
+                <FormControl>
+                  <Input
+                    id="jumlahKeluarga"
+                    placeholder="Masukkan Jumlah Keluarga"
+                    {...field}
+                    autoFocus
+                    required
+                  />
+                </FormControl>
                 <FormMessage {...field} />
               </FormItem>
             )}
@@ -170,14 +161,16 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="required-field">Harga Beras</FormLabel>
-                <Input
-                  id="hargaBeras"
-                  placeholder="Masukkan Harga Beras"
-                  {...field}
-                  autoFocus
-                  required
-                  type="number"
-                />
+                <FormControl>
+                  <Input
+                    id="hargaBeras"
+                    placeholder="Masukkan Harga Beras"
+                    {...field}
+                    autoFocus
+                    required
+                    type="number"
+                  />
+                </FormControl>
                 <FormMessage {...field} />
               </FormItem>
             )}
@@ -191,14 +184,16 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="required-field">Orang</FormLabel>
-                <Input
-                  id="orangB"
-                  placeholder="Orang"
-                  {...field}
-                  autoFocus
-                  required
-                  type="number"
-                />
+                <FormControl>
+                  <Input
+                    id="orangB"
+                    placeholder="Orang"
+                    {...field}
+                    autoFocus
+                    required
+                    type="number"
+                  />
+                </FormControl>
                 <FormMessage {...field} />
               </FormItem>
             )}
@@ -209,14 +204,16 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="required-field">Liter</FormLabel>
-                <Input
-                  id="liter"
-                  placeholder="Liter"
-                  {...field}
-                  autoFocus
-                  required
-                  type="number"
-                />
+                <FormControl>
+                  <Input
+                    id="liter"
+                    placeholder="Liter"
+                    {...field}
+                    autoFocus
+                    required
+                    type="number"
+                  />
+                </FormControl>
                 <FormMessage {...field} />
               </FormItem>
             )}
@@ -232,14 +229,16 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="required-field">Orang</FormLabel>
-                <Input
-                  id="orangU"
-                  placeholder="Orang"
-                  {...field}
-                  autoFocus
-                  required
-                  type="number"
-                />
+                <FormControl>
+                  <Input
+                    id="orangU"
+                    placeholder="Orang"
+                    {...field}
+                    autoFocus
+                    required
+                    type="number"
+                  />
+                </FormControl>
                 <FormMessage {...field} />
               </FormItem>
             )}
@@ -250,14 +249,16 @@ export function ZakatForm({ zakat, zakatId, action, close }: ZakatFormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="required-field">Rupiah</FormLabel>
-                <Input
-                  id="rupiah"
-                  placeholder="Rupiah"
-                  {...field}
-                  autoFocus
-                  required
-                  type="number"
-                />
+                <FormControl>
+                  <Input
+                    id="rupiah"
+                    placeholder="Rupiah"
+                    {...field}
+                    autoFocus
+                    required
+                    type="number"
+                  />
+                </FormControl>
                 <FormMessage {...field} />
               </FormItem>
             )}

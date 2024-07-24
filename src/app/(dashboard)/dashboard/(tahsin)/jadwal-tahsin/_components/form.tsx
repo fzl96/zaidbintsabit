@@ -101,7 +101,7 @@ export function JadwalTahsinForm({
   if (action === "delete" && jadwalTahsinId) {
     return (
       <form
-        className="space-y-2"
+        className="space-y-2 px-4"
         action={async () => await deleteJadwalTahsinAction(jadwalTahsinId)}
       >
         <Button
@@ -125,14 +125,6 @@ export function JadwalTahsinForm({
         >
           {isPending && <Icons.spinner className="animate-spin h-4 w-4 mr-2" />}
           Hapus
-        </Button>
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full"
-          onClick={close}
-        >
-          Batal
         </Button>
       </form>
     );
