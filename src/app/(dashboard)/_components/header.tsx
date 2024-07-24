@@ -41,7 +41,7 @@ export function Header() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col">
+        <SheetContent side="left" className="flex flex-col overflow-y-auto">
           <Nav className="grid gap-2 text-lg font-medium" />
         </SheetContent>
       </Sheet>
