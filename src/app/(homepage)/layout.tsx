@@ -18,7 +18,7 @@ export default function HomePageLayout({
 }) {
   return (
     <div>
-      <header>
+      <header className="sticky top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
         <Navbar />
       </header>
       <main className="min-h-screen">{children}</main>
