@@ -48,10 +48,10 @@ export function MobileNavToggle({ loggedIn }: { loggedIn?: boolean }) {
         <Link href="/keuangan/infaq-ramadhan">
           <DropdownMenuItem>Infaq Ramadhan</DropdownMenuItem>
         </Link>
-        <Link href="/keuangan/infaq-masjid">
+        <Link href="/keuangan/infaq-anak-yatim">
           <DropdownMenuItem>Infaq Anak Yatim</DropdownMenuItem>
         </Link>
-        <Link href="/jadwal-tahsin">
+        <Link href="/tahsin">
           <DropdownMenuItem>Jadwal Tahsin</DropdownMenuItem>
         </Link>
         <Link href="/post/aktivitas">
