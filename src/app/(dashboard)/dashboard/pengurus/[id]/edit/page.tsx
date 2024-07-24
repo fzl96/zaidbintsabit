@@ -3,7 +3,7 @@ import { Wrapper } from "@/app/(dashboard)/_components/wrapper";
 import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { EditForm } from "./_components/edif-form";
-// import { PengurusForm } from "../_components/form";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Edit Pengurus Masjid",
@@ -16,6 +16,7 @@ export default function JadwalTahsinPage({
     id: string;
   };
 }) {
+  noStore();
   const id = params.id;
 
   return (

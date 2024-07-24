@@ -4,12 +4,14 @@ import { BreadcrumbComponent } from "@/components/breadcrumb";
 import { AkunForm } from "../../_components/form";
 import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { EditForm } from "./_components/edit-form";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Edit Akun Pengurus",
 };
 
 export default function EditUserPage({ params }: { params: { id: string } }) {
+  noStore();
   const { id } = params;
   return (
     <Wrapper>
