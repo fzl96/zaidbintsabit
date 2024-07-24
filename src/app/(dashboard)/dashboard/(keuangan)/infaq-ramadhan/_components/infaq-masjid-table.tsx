@@ -28,6 +28,7 @@ export async function InfaqMasjidTable({
       page={page}
       tipe={tipe}
       saldo={saldo}
+      kategori="ramadhan"
     />
   );
 }

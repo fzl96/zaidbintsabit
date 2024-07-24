@@ -6,6 +6,7 @@ import { formatCurrency, formatDate } from "@/lib/utils";
 import { type Keuangan } from "@/server/db/schema/keuangan";
 import { ColumnDef } from "@tanstack/react-table";
 import { TypeFilter } from "./type-filter";
+import { UpdateFinance, DeleteFinance } from "./actions";
 
 export async function FinanceTable({
   data,
@@ -14,10 +15,12 @@ export async function FinanceTable({
   totalPages,
   tipe,
   saldo,
+  kategori,
 }: {
   page: number;
   totalPages: number;
   tipe: "semua" | "pengeluaran" | "pemasukan";
+  kategori: "infaq" | "yatim" | "ramadhan" | "jumat";
   data: Keuangan[];
   columns: ColumnDef<Keuangan>[];
   saldo: number;
@@ -60,8 +63,11 @@ export async function FinanceTable({
                     </span>
                   </div>
                   <div className="flex justify-end gap-2">
-                    {/* <UpdateFinance finance={finance} type="INCOME" />
-                    <DeleteFinance financeId={finance.id} type="EXPENSE" /> */}
+                    <UpdateFinance finance={finance} kategori={kategori} />
+                    <DeleteFinance
+                      keuanganId={finance.id}
+                      kategori={kategori}
+                    />
                   </div>
                 </div>
               </div>

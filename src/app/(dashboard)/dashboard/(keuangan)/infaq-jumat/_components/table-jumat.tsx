@@ -25,6 +25,7 @@ export async function JumatTable({
       page={page}
       tipe={tipe}
       saldo={saldo}
+      kategori="jumat"
     />
   );
 }

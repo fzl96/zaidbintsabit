@@ -25,6 +25,7 @@ export async function AnakYatimTable({
       page={page}
       tipe={tipe}
       saldo={saldo}
+      kategori="yatim"
     />
   );
 }
