@@ -98,8 +98,9 @@ export function createPdf(data: Keuangan[], fileName: string) {
 export function createZakatPdf(data: Zakat[], fileName: string) {
   const doc = new jsPDF();
   doc.addImage("/masjid/kop.png", "PNG", 0, 5, 210, 30);
+  doc.text(`ZAKAT`, 93, 50);
   autoTable(doc, {
-    startY: 40,
+    startY: 60,
     head: [
       [
         "No",
@@ -145,9 +146,10 @@ export async function createInventarisPdf(
   fileName: string
 ) {
   const doc = new jsPDF();
+  doc.text(`INVENTARIS MAJID`, 78, 50);
   doc.addImage("/masjid/kop.png", "PNG", 0, 5, 210, 30);
   autoTable(doc, {
-    startY: 40,
+    startY: 60,
     head: [["No", "Barang", "Jumlah", "Kondisi", "Keterangan"]],
     body: data.map((item, index) => {
       return [
