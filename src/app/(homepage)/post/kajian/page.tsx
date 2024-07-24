@@ -4,6 +4,7 @@ import { SearchFilter } from "@/components/search-filter";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PostCards } from "../_components/post-cards";
 import { PostPagination } from "../_components/post-pagination";
+import { PostCardsSkeleton } from "../_components/pos-cards-skeleton";
 
 export default function KajianPage({
   searchParams,
@@ -24,11 +25,11 @@ export default function KajianPage({
       <div className="py-3">
         <SearchFilter placeholder="Cari kajian" />
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PostCardsSkeleton />}>
         <PostCards page={page} query={query} kategori="kajian" />
       </Suspense>
       <div className="my-5 flex w-full justify-center">
-        <Suspense fallback={<Skeleton className="w-10 h-40" />}>
+        <Suspense fallback={<Skeleton className="w-40 h-10" />}>
           <PostPagination page={page} query={query} kategori="kajian" />
         </Suspense>
       </div>

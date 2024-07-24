@@ -4,6 +4,7 @@ import { SearchFilter } from "@/components/search-filter";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PostCards } from "../_components/post-cards";
 import { PostPagination } from "../_components/post-pagination";
+import { PostCardsSkeleton } from "../_components/pos-cards-skeleton";
 
 export default function PengumumanPage({
   searchParams,
@@ -24,7 +25,7 @@ export default function PengumumanPage({
       <div className="py-3">
         <SearchFilter placeholder="Cari pengumuman" />
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PostCardsSkeleton />}>
         <PostCards page={page} query={query} kategori="pengumuman" />
       </Suspense>
       <div className="my-5 flex w-full justify-center">
