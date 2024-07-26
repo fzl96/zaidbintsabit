@@ -1,0 +1,104 @@
+table anggota_tahsin {
+  id serial [pk, not null, increment]
+  nama varchar(255) [not null]
+  alamat varchar(255)
+  no_hp varchar(255)
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table inventaris {
+  id serial [pk, not null, increment]
+  nama varchar(255) [not null]
+  jumlah integer [not null]
+  kondisi_baik integer [not null]
+  kondisi_rusak integer [not null]
+  keterangan varchar(255)
+  kategori_id integer [not null]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table jadwal_sholat {
+  id serial [pk, not null, increment]
+  nama varchar(255) [not null]
+  jenis_jadwal_sholat jenis_jadwal_sholat [not null]
+  imam varchar(255)
+  tanggal timestamp [not null, default: `now()`]
+  judul varchar(255)
+  khatib varchar(255)
+  display boolean [not null, default: true]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table jadwal_tahsin {
+  id serial [pk, not null, increment]
+  nama_ustadz varchar(255) [not null]
+  tanggal_tahsin timestamp [not null]
+  catatan varchar(255)
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table kategori_inventaris {
+  id serial [pk, not null, increment]
+  nama varchar(255) [not null]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table keuangan {
+  id serial [pk, not null, increment]
+  jumlah integer [not null]
+  keterangan varchar(255)
+  tipe tipe_keuangan [not null]
+  kategori kategori_keuangan [not null]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table pengurus {
+  id serial [pk, not null, increment]
+  nama varchar [not null]
+  no_hp varchar
+  foto varchar
+  status status_pengurus [not null]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table post {
+  id varchar(100) [pk, not null]
+  judul varchar(255) [not null]
+  slug varchar(255) [not null, unique]
+  thumbnail varchar(255)
+  tanggal timestamp [not null, default: `now()`]
+  konten text [not null]
+  kategori post_category [not null]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+table user {
+  id text [pk, not null]
+  name text
+  username text [not null, unique]
+  password text [not null]
+  role role [not null, default: 'PENGURUS']
+}
+
+table zakat {
+  id serial [pk, not null, increment]
+  nama_kk varchar [not null]
+  jumlah_keluarga integer [not null]
+  harga_beras integer [not null]
+  jumlah_orang_beras integer [not null]
+  jumlah_liter integer [not null]
+  jumlah_orang_uang integer [not null]
+  jumlah_rupiah integer [not null]
+  created_at timestamp [not null, default: `now()`]
+  updated_at timestamp [not null, default: `now()`]
+}
+
+ref: inventaris.kategori_id - kategori_inventaris.id
