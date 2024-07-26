@@ -30,7 +30,7 @@ export default function PengurusPage({
       <BreadcrumbComponent
         items={[
           { title: "Dashboard", href: "/dashboard" },
-          { title: "Pengurus Masjid", href: "/dashboard/pengurus" },
+          { title: "Imam dan Muadzin", href: "/dashboard/pengurus" },
         ]}
       />
       <div className="space-y-8">
