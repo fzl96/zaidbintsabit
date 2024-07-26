@@ -92,7 +92,7 @@ export const sidebarNavItems: SidebarNavItem[] = [
     title: "Data Masjid",
     items: [
       {
-        title: "Pengurus Masjid",
+        title: "Imam dan Muadzin",
         href: "/dashboard/pengurus",
         icon: "userCheck",
       },

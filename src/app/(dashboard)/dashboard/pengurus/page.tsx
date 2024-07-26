@@ -34,7 +34,7 @@ export default function PengurusPage({
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Pengurus Masjid">
+        <PageTitle title="Imam dan Muadzin Masjid">
           <Link href="/dashboard/pengurus/tambah" className={buttonVariants()}>
             Tambah
           </Link>
