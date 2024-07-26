@@ -10,7 +10,7 @@ import { PenguruTable } from "./_components/table";
 import { unstable_noStore as noStore } from "next/cache";
 
 export const metadata: Metadata = {
-  title: "Pengurus Masjid",
+  title: "Imam dan Muadzin Masjid",
 };
 
 export default function PengurusPage({
