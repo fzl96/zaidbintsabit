@@ -21,7 +21,7 @@ export async function AnggotaTahsinTable({
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
-        <SearchFilter placeholder="Cari Anggota Inventaris" />
+        <SearchFilter placeholder="Cari Anggota Tahsin" />
       </div>
 
       <div className="inline-block min-w-full align-middle">
