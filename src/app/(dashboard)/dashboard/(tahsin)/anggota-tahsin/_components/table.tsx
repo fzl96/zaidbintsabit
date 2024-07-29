@@ -6,6 +6,7 @@ import {
   getAnggotaTahsin,
   getAnggotaTahsinTotalPages,
 } from "@/server/api/tahsin/anggota/queries";
+import { UpdateAnggotaTahsin, DeleteAnggotaTahsin } from "./actions";
 
 export async function AnggotaTahsinTable({
   page,
@@ -38,16 +39,11 @@ export async function AnggotaTahsinTable({
                 )}
                 <div className="flex w-full items-center justify-between pt-4">
                   <div className="flex flex-col">
-                    <span className="text-base">
-                      {/* {formatDate(kategori.createdAt)} */}
-                      {anggota.alamat}
-                    </span>
+                    <span className="text-base">{anggota.alamat}</span>
                   </div>
                   <div className="flex justify-end gap-2">
-                    {/* <UpdateKategoriInventaris kategoriInventaris={kategori} />
-                    <DeleteKategoriInventaris
-                      kategoriInventarisId={kategori.id}
-                    /> */}
+                    <UpdateAnggotaTahsin anggotaTahsin={anggota} />
+                    <DeleteAnggotaTahsin anggotaTahsinId={anggota.id} />
                   </div>
                 </div>
               </div>
