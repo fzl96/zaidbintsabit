@@ -6,8 +6,6 @@ import { siteConfig } from "@/config/site";
 import { Nav } from "./_components/nav";
 import { SiteFooter } from "./_components/site-footer";
 
-export const experimental_ppr = true;
-
 export const metadata: Metadata = {
   title: {
     default: "Dashboard - Masjid Zaid bin Tsabit",
