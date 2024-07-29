@@ -25,7 +25,7 @@ export async function PenguruTable({
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
-        <SearchFilter placeholder="Cari Inventaris" />
+        <SearchFilter placeholder="Cari Imam atau Muadzin" />
       </div>
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-[#f6f8fa] p-2 md:pt-0 shadow-sm">

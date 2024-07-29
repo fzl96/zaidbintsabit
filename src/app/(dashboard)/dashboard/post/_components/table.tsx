@@ -22,7 +22,7 @@ export async function PostTable({
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
-        <SearchFilter placeholder="Cari Inventaris" />
+        <SearchFilter placeholder="Cari Post" />
       </div>
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-[#f6f8fa] p-2 md:pt-0 shadow-sm">
