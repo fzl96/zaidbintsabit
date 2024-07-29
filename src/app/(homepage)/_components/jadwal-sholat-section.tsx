@@ -39,8 +39,6 @@ export async function JadwalSholatSection() {
                 const date = new Date();
                 const hour = date.getHours();
                 const jadwal = jadwalSholat.find((j) => j.id === item.id);
-                const active =
-                  jadwal && hour >= jadwal.jamMulai && hour < jadwal.jamSelesai;
                 const tanggal = new Date(item.tanggal);
                 tanggal.setHours(tanggal.getHours() + 7);
 
@@ -48,8 +46,7 @@ export async function JadwalSholatSection() {
                   <div
                     key={item.id}
                     className={cn(
-                      "flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10",
-                      active && "bg-primary text-white"
+                      "flex flex-col items-center bg-white p-4 rounded-lg ring-1 ring-inset ring-gray-900/10"
                     )}
                   >
                     <div className="font-medium">{item.nama}</div>
