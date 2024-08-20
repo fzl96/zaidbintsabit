@@ -3,9 +3,10 @@ import { Wrapper } from "../_components/wrapper";
 import { YearSelect } from "./(keuangan)/_components/year-select";
 import { DashboardCards } from "./_components/dashboard-cards";
 import { CardsSkeleton } from "./_components/dashboard-cards-skeleton";
-import { DashboardChart } from "./_components/dashboard-chart";
 import { Skeleton } from "@/components/ui/skeleton";
 import { unstable_noStore as noStore } from "next/cache";
+import { IncomeChart } from "./_components/income-chart-wrapper";
+import { ExpenseChart } from "./_components/expense-chart-wrapper";
 
 export default async function Dashboard({
   searchParams,
@@ -35,7 +36,15 @@ export default async function Dashboard({
           <Skeleton className="bg-gray-100 w-full h-[28rem] animate-pulse" />
         }
       >
-        <DashboardChart year={year} />
+        <IncomeChart year={year} />
+      </Suspense>
+
+      <Suspense
+        fallback={
+          <Skeleton className="bg-gray-100 w-full h-[28rem] animate-pulse" />
+        }
+      >
+        <ExpenseChart year={year} />
       </Suspense>
     </Wrapper>
   );
