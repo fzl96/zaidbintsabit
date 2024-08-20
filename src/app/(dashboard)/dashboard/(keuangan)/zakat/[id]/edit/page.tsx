@@ -5,7 +5,7 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { EditZakatForm } from "./_components/edit-form";
 
 export const metadata: Metadata = {
-  title: "Edit Zakat Masjid",
+  title: "Edit Zakat",
 };
 
 export default function EditZakatPage({ params }: { params: { id: string } }) {
@@ -20,7 +20,7 @@ export default function EditZakatPage({ params }: { params: { id: string } }) {
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Tambah Zakat Masjid" />
+        <PageTitle title="Tambah Zakat" />
 
         <div>
           <EditZakatForm id={Number(id)} />

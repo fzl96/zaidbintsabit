@@ -29,10 +29,10 @@ export const sidebarNavItems: SidebarNavItem[] = [
     ],
   },
   {
-    title: "Zakat Masjid",
+    title: "Zakat",
     items: [
       {
-        title: "Zakat",
+        title: "Pencatatan Zakat",
         href: "/dashboard/zakat",
       },
     ],

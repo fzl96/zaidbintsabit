@@ -5,7 +5,7 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { ZakatForm } from "../_components/form";
 
 export const metadata: Metadata = {
-  title: "Tambah Zakat Masjid",
+  title: "Tambah Zakat",
 };
 
 export default function TambahZakatPage() {
@@ -19,7 +19,7 @@ export default function TambahZakatPage() {
         ]}
       />
       <div className="space-y-8">
-        <PageTitle title="Tambah Zakat Masjid" />
+        <PageTitle title="Tambah Zakat" />
 
         <div>
           <ZakatForm action="create" />

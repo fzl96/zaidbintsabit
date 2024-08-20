@@ -5,7 +5,7 @@ import { PageTitle } from "@/app/(dashboard)/_components/page-title";
 import { PengurusForm } from "../_components/form";
 
 export const metadata: Metadata = {
-  title: "Tambah Pengurus Masjid",
+  title: "Tambah Imam atau Muadzin Masjid",
 };
 
 export default function TambahPengurusPage() {
