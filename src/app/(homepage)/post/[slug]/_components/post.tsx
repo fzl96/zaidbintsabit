@@ -11,7 +11,7 @@ export async function Post({ slug }: { slug: string }) {
   const post = await getPostBySlug(slug);
 
   return (
-    <article className="prose">
+    <article className="prose  max-w-full">
       <div className="flex gap-5 mb-0">
         <div className="flex p-7 rounded-xl border  bg-gray-400/5 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl flex-col">
           <h1 className="mb-0 text-2xl md:text-4xl">{post?.judul}</h1>
@@ -34,7 +34,7 @@ export async function Post({ slug }: { slug: string }) {
                 {post?.kategori === "aktivitas"
                   ? "Aktivitas"
                   : capitalizeFirstLetter(
-                      post?.kategori.toLowerCase() || "lainnya"
+                      post?.kategori.toLowerCase() || "lainnya",
                     )}
               </Badge>
             </span>
@@ -49,7 +49,15 @@ export async function Post({ slug }: { slug: string }) {
                 className="object-cover h-full w-full rounded-md"
               />
             </div>
-            {parse(post?.konten || "")}
+            <div className="xl:w-full md:w-[30rem] w-80">
+              {post?.kategori !== "kajian" ? (
+                parse(post?.konten || "")
+              ) : (
+                <span className="bg-red-500 break-words">
+                  {parse(post?.konten)}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
